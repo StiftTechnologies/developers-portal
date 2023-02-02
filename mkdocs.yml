@@ -26,3 +26,4 @@ markdown_extensions:
 nav:
   - index.md
   - users.md
+  - auth_integration.md
