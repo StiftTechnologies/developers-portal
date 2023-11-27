@@ -50,14 +50,14 @@ POST /users
 | **first_name**  | Body     | string | User's first name (John)                               | Yes      |
 | **last_name**   | Body     | string | User's last name (Doe)                                 | Yes      |
 | **email**       | Body     | string | User's email                                           | Yes      |
-| **phone**       | Body     | string | User's phone number (+5548991234567)                   | No       |
-| **birth_date**  | Body     | string | User's birth date (2002-11-28)                         | No       |
-| **location**    | Body     | string | The closest known location to the user (Brazil)        | Yes      |
-| **gender**      | Body     | string | Use MASCULINE, FEMININE or OTHER as accepted values    | Yes      |
 | **type**        | Body     | string | Use STUDENT, TEACHER or GROUP_ADMIN as accepted values | Yes      |
 | **group_ids**   | Body     | array  | List of the group ids the user should be part of       | Yes      |
 | **groups_data** | Body     | array  | List of [GroupData](./#groupdata) objects              | Yes      |
-| **password**    | Body     | string | The user's password. Minimum length is 8               | Yes      |
+| **gender**      | Body     | string | Use MASCULINE, FEMININE or OTHER as accepted values    | No       |
+| **birth_date**  | Body     | string | User's birth date (2002-11-28)                         | No       |
+| **phone**       | Body     | string | User's phone number (+5548991234567)                   | No       |
+| **location**    | Body     | string | The closest known location to the user (Brazil)        | No       |
+| **password**    | Body     | string | The user's password. Minimum length is 8               | No       |
 
 #### Example
 
