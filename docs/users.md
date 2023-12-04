@@ -197,7 +197,7 @@ PATCH /users/:id
 | **birth_date**   | Body     | string  | User's birth date (2002-11-28)                                                                                                                                                                                       | No       |
 | **phone**        | Body     | string  | User's phone number (+5548991234567)                                                                                                                                                                                 | No       |
 | **location**     | Body     | string  | The closest known location to the user (Brazil)                                                                                                                                                                      | No       |
-| **new_password** | Body     | string  | The user's updated password. Minimum length is 8                                                                                                                                                                     | No       |
+| **new_password** | Body     | string  | The user's updated password. Minimum length is 8. The password can only be updated if the user is 100% owned by your API Key, which means, your API key has access to all the user's groups.                          | No       |
 
 #### Example
 
