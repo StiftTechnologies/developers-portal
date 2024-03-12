@@ -73,7 +73,7 @@ GET /users
     "last_name": "Doe",
     "type": "STUDENT",
     "profile_photo_url": "https://sa-east-1-public-cdn.stift.com.br/resources/images/placeholders/profile_photo_placeholder.png",
-    "created_at": "2022-12-05T08:37:41.811Z"
+    "created_at": "2024-12-05T08:37:41.811Z"
   }
 ]
 ```
@@ -168,7 +168,7 @@ POST /users
     }
   ],
   "password": "12345678",
-  "created_at": "2022-12-05T08:37:41.811Z"
+  "created_at": "2024-12-05T08:37:41.811Z"
 }
 ```
 
@@ -264,6 +264,6 @@ PATCH /users/:id
     }
   ],
   "blocked": true,
-  "created_at": "2022-12-05T08:37:41.811Z"
+  "created_at": "2024-12-05T08:37:41.811Z"
 }
 ```
