@@ -46,12 +46,15 @@ GET /users
 
 #### Parameters
 
-| Parameter  | Location | Type   | Description                                                                                                                                           | Required |
-| ---------- | -------- | ------ | ----------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-| **query**  | Query    | string | Search query to filter users by. Searches using vectors determined by the user's first_name, last_name, and email, so any of these are valid queries. | No       |
-| **limit**  | Query    | string | The maximum limit of users to return. Defaults to 100.                                                                                                | No       |
-| **offset** | Query    | string | The numbers of users to skip. The order is always determined by the user's creation date, and by the closest match to the query, if there is any.     | No       |
-| **type**   | Query    | string | Use STUDENT, TEACHER or GROUP_ADMIN as accepted values.                                                                                               | No       |
+| Parameter         | Location | Type    | Description                                                                                                                                                               | Required |
+| ----------------- | -------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| **query**         | Query    | string  | Search query to filter users by. Searches using vectors determined by the user's first_name, last_name, and email, so any of these are valid queries.                     | No       |
+| **limit**         | Query    | string  | The maximum limit of users to return. Defaults to 100.                                                                                                                    | No       |
+| **offset**        | Query    | string  | The numbers of users to skip. The order is always determined by the user's creation date, and by the closest match to the query, if there is any.                         | No       |
+| **type**          | Query    | string  | Use STUDENT, TEACHER or GROUP_ADMIN as accepted values.                                                                                                                   | No       |
+| **discipline_id** | Query    | int     | Search teachers by a [discipline id](disciplines.md).                                                                                                                     | No       |
+| **group_ids**     | Query    | string  | Search users by the groups they are part of, with a comma separated list of group ids. Example: bee1b51e-1843-443b-8bd2-9c46c86373c5,d7e595ef-cdfa-406c-81af-227fde165309 | No       |
+| **blocked**       | Query    | boolean | Set this parameter to true to search only for blocked users.                                                                                                              | No       |
 
 ### Response
 
@@ -71,6 +74,7 @@ GET /users
     "id": "d7e595ef-cdfa-406c-81af-227fde165309",
     "first_name": "John",
     "last_name": "Doe",
+    "email": "john.doe@stift.com.br",
     "type": "STUDENT",
     "profile_photo_url": "https://sa-east-1-public-cdn.stift.com.br/resources/images/placeholders/profile_photo_placeholder.png",
     "created_at": "2024-12-05T08:37:41.811Z"
@@ -197,7 +201,7 @@ PATCH /users/:id
 | **birth_date**   | Body     | string  | User's birth date (2002-11-28)                                                                                                                                                                                       | No       |
 | **phone**        | Body     | string  | User's phone number (+5548991234567)                                                                                                                                                                                 | No       |
 | **location**     | Body     | string  | The closest known location to the user (Brazil)                                                                                                                                                                      | No       |
-| **new_password** | Body     | string  | The user's updated password. Minimum length is 8. The password can only be updated if the user is 100% owned by your API Key, which means, your API key has access to all the user's groups.                          | No       |
+| **new_password** | Body     | string  | The user's updated password. Minimum length is 8. The password can only be updated if the user is 100% owned by your API Key, which means, your API key has access to all the user's groups.                         | No       |
 
 #### Example
 
