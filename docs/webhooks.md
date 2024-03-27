@@ -79,7 +79,8 @@ This event is triggered when a reply is answered. Its payload bring data about t
       "name": "Test School"
     },
     "discipline": { "name": "Math" },
-    "subject": { "name": "Algebra" }
+    "subject": { "name": "Algebra" },
+    "url": "https://app.stift.com.br/?question=c64a24e4-ebb5-40ef-8828-9a7c006b5062"
   }
 }
 ```
