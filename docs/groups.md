@@ -22,11 +22,31 @@ POST /groups
 
 #### Parameters
 
-| Parameter                   | Location | Type                           | Description                                 | Required |
-| --------------------------- | -------- | ------------------------------ | ------------------------------------------- | -------- |
-| **name**                    | Body     | string                         | Group's name                                | Yes      |
-| **discipline_restrictions** | Body     | [Discipline[]](disciplines.md) | Disciplines the group has access to         | Yes      |
-| **business_model**          | Body     | string                         | Group's [business model](./#business-model) | Yes      |
+| Parameter                   | Location | Type                           | Description                                                       | Required |
+| --------------------------- | -------- | ------------------------------ | ----------------------------------------------------------------- | -------- |
+| **name**                    | Body     | string                         | Group's name                                                      | Yes      |
+| **discipline_restrictions** | Body     | [Discipline[]](disciplines.md) | Disciplines the group has access to                               | Yes      |
+| **business_model**          | Body     | string                         | Group's [business model](./#business-model)                       | Yes      |
+| **copy**                    | Body     | [Copy](#copy)                  | Copy object if you want to base the new group on an existing one. | No       |
+
+##### Copy
+
+If you want to create a new group based on an existing one, you can use the `copy` parameter. It must have the `id` of the group you want to copy. You must also specify what you want to copy from the group. The copied group's parameters will override other specified parameters. The available options are:
+
+- **discipline_restrictions (boolean)**: Copy the disciplines the source group has.
+- **teachers (boolean)**: Copy the teachers the source group has.
+- **cost_preference (boolean)**: Copy the cost preference the source group has.
+
+###### Copy example
+
+```json
+{
+  "id": "7033d947-e140-4a83-86b3-cd8ffcb87913",
+  "discipline_restrictions": true,
+  "teachers": true,
+  "cost_preference": true
+}
+```
 
 #### Example
 
@@ -44,7 +64,13 @@ POST /groups
     {
       "id": 3
     }
-  ]
+  ],
+  "copy": {
+    "id": "7033d947-e140-4a83-86b3-cd8ffcb87913",
+    "discipline_restrictions": true,
+    "teachers": true,
+    "cost_preference": true
+  }
 }
 ```
 
