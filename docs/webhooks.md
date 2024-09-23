@@ -32,7 +32,8 @@ This event is triggered when a question is answered. Its payload brings data abo
     },
     "group": {
       "id": "e5f8abe2-53f2-48bc-b7a4-d6167b9e900f",
-      "name": "Test Group"
+      "name": "Test Group",
+      "business_model": "B2B_SAAS"
     },
     "school": {
       "id": "8f03cc77-bf49-4a9f-9b7c-e7dba5f068d7",
@@ -72,7 +73,8 @@ This event is triggered when a reply is answered. Its payload bring data about t
     },
     "group": {
       "id": "e5f8abe2-53f2-48bc-b7a4-d6167b9e900f",
-      "name": "Test Group"
+      "name": "Test Group",
+      "business_model": "B2B_OUTSOURCING"
     },
     "school": {
       "id": "8f03cc77-bf49-4a9f-9b7c-e7dba5f068d7",
