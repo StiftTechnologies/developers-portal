@@ -62,3 +62,115 @@ POST /reports/questions
   }
 ]
 ```
+
+## Bookings Report
+
+If you want to generate a report about the bookings that happened or are scheduled to happen, send this `POST` request:
+
+```http
+POST /reports/bookings
+```
+
+### Request
+
+#### Parameters
+
+| Parameter      | Location | Type                     | Description                                                                                                                            | Required |
+| -------------- | -------- | ------------------------ | -------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| **start_date** | Body     | Milliseconds since epoch | The date to start the report data in milliseconds since UNIX Epoch. For scheduled meetings, considers the date the booking is scheduled for.                                                                    | Yes      |
+| **end_date**   | Body     | Milliseconds since epoch | The date to end the report data in milliseconds since UNIX Epoch. For scheduled meetings, considers the date the booking is scheduled for.                                                                      | Yes      |
+| **school_ids** | Body     | string[]                 | List of the school ids you want to generate the report about. If not specified, it will bring data about all schools you have access to. | No       |
+| **Accept**     | Header   | Mime type                | The format you want the report to be in. Supported values are `application/json` and `text/csv`. It defaults to `application/json`. In CSV mode, column names will be in Portuguese.    | No       |
+
+### Response
+
+#### Status
+
+| Code | Description                           |
+| ---- | ------------------------------------- |
+| 200  | The report was generated succesfully. |
+| 401  | Unauthorized.                         |
+
+
+#### Booking Status (Status field)
+
+| Status   | Description |
+| -------- | ----------- |
+| PRESENT | Meeting exists and has at least started. |
+| NO_SHOW | Scheduled meeting has passed, no meeting exists. |
+| OUTSIDE_SCHEDULE_CANCEL | The student cancelled the booking later than the minimum hours to cancel without losing credits. |
+| INSIDE_SCHEDULE_CANCEL | The student cancelled the booking within the minimum hours to cancel without losing credits. |
+| CANCELLED | The booking was cancelled by someone else (teacher, group admin). |
+| PENDING | The booking is scheduled to happen. |
+| QUEUE | The booking is in the queue. |
+| LEFT_QUEUE | The student left the queue without joining a meeting. |
+| NOT_REALIZED | The student joined the queue and the meeting was not held, or the user is still in the queue. |
+
+#### Example
+
+```json
+[
+    {
+        "id": "a300c187-5883-41dd-a7dc-03d4ebdd5a4d",
+        "school_name": "School",
+        "created_at": "15/10/2024 15:41",
+        "scheduled_for": "17/10/2024 17:00",
+        "start_time": "",
+        "end_time": "",
+        "duration": "",
+        "student_external_id": "123456",
+        "student_name": "Student Name",
+        "student_email": "student@stift.com.br",
+        "teacher_name": "Teacher Name",
+        "teacher_email": "teacher@stift.com.br",
+        "group_name": "Group Name",
+        "discipline_name": "Discipline Name",
+        "booking_room_name": "Booking Room Name",
+        "booking_room_modal": "Online",
+        "rating_by_student": 4.9,
+        "rating_by_teacher": "",
+        "status": "Pendente",
+        "cancelled_at": "",
+        "cancelled_by_name": ""
+    }
+]
+```
+
+## Bookings Workload
+
+If you want to generate a report about the weekly workload of the teachers, send this `POST` request:
+
+```http
+POST /reports/bookings-workload
+```
+
+### Request
+
+#### Parameters
+
+| Parameter      | Location | Type                     | Description                                                                                                                            | Required |
+| -------------- | -------- | ------------------------ | -------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| **school_ids** | Body     | string[]                 | List of the school ids you want to generate the report about. If not specified, it will bring data about all schools you have access to. | No       |
+| **Accept**     | Header   | Mime type                | The format you want the report to be in. Supported values are `application/json` and `text/csv`. It defaults to `application/json`. In CSV mode, column names will be in Portuguese.    | No       |
+
+### Response
+
+#### Status
+
+| Code | Description                           |
+| ---- | ------------------------------------- |
+| 200  | The report was generated succesfully. |
+| 401  | Unauthorized.                         |
+
+#### Example
+
+```json
+[
+    {
+        "teacher_name": "Teacher Name",
+        "teacher_email": "teacher@stift.com.br",
+        "weekly_minutes": 60,
+        "discipline_name": "Discipline Name"
+    },
+]
+```
