@@ -109,6 +109,106 @@ If you want to create a new group based on an existing one, you can use the `cop
 }
 ```
 
+## Patch a group
+
+If you want to patch a new group, send this `PATCH` request:
+
+```http
+POST /groups/:id
+```
+
+### Request
+
+#### Parameters
+
+| Parameter                   | Location      | Type                           | Description                                                       | Required |
+| --------------------------- | ------------- | ------------------------------ | ----------------------------------------------------------------- | -------- |
+| **id**                      | URL Parameter | string                         | Group's id                                                        | Yes      |
+| **name**                    | Body          | string                         | Group's name                                                      | Yes      |
+| **discipline_restrictions** | Body          | [Discipline[]](disciplines.md) | Disciplines the group has access to                               | Yes      |
+| **business_model**          | Body          | string                         | Group's [business model](./#business-model)                       | Yes      |
+| **copy**                    | Body          | [Copy](#copy)                  | Copy object if you want to base the new group on an existing one. | No       |
+
+##### Copy
+
+If you want to patch a group based on an existing one, you can use the `copy` parameter. It must have the `id` of the group you want to copy. You must also specify what you want to copy from the group. The copied group's parameters will override other specified parameters. The available options are:
+
+- **discipline_restrictions (boolean)**: Copy the disciplines the source group has.
+- **teachers (boolean)**: Copy the teachers the source group has.
+- **cost_preference (boolean)**: Copy the cost preference the source group has.
+
+###### Copy example
+
+```json
+{
+  "id": "7033d947-e140-4a83-86b3-cd8ffcb87913",
+  "discipline_restrictions": true,
+  "teachers": true,
+  "cost_preference": true
+}
+```
+
+#### Example
+
+```json
+{
+  "name": "Extensivo 2023.2",
+  "business_model": "B2B_OUTSOURCING",
+  "discipline_restrictions": [
+    {
+      "id": 1
+    },
+    {
+      "id": 2
+    },
+    {
+      "id": 3
+    }
+  ],
+  "copy": {
+    "id": "7033d947-e140-4a83-86b3-cd8ffcb87913",
+    "discipline_restrictions": true,
+    "teachers": true,
+    "cost_preference": true
+  }
+}
+```
+
+### Response
+
+#### Status
+
+| Code | Description                                                               |
+| ---- | ------------------------------------------------------------------------- |
+| 201  | The group was successfully patched.                                       |
+| 400  | Some parameter must be malformed or missing. Check the response for more. |
+| 401  | Unauthorized.                                                             |
+
+#### Example
+
+```json
+{
+  "id": "7033d947-e140-4a83-86b3-cd8ffcb87913",
+  "name": "Extensivo 2023.2",
+  "school": {
+    "id": "a6312d26-42c6-45dd-8eeb-5a6f85a1834f"
+  },
+  "business_model": "B2B_OUTSOURCING",
+  "discipline_restrictions": [
+    {
+      "id": 1
+    },
+    {
+      "id": 2
+    },
+    {
+      "id": 3
+    }
+  ],
+  "created_at": "2023-08-10T19:21:09.026Z"
+}
+```
+
 ## List groups
 
 If you want to list all groups, send this `GET` request:
