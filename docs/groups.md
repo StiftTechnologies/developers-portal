@@ -114,7 +114,7 @@ If you want to create a new group based on an existing one, you can use the `cop
 If you want to patch a new group, send this `PATCH` request:
 
 ```http
-POST /groups/:id
+PATCH /groups/:id
 ```
 
 ### Request
