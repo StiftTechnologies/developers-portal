@@ -174,3 +174,136 @@ POST /reports/bookings-workload
     },
 ]
 ```
+
+
+# Groups Usage Report
+
+To generate a Groups Usage report, send the following `POST` request:
+
+```http
+POST /reports/groups-usage
+```
+
+## Request
+
+### Parameters
+
+| Parameter      | Location | Type                     | Description                                                                                                                              | Required |
+| -------------- | -------- | ------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| **name**       | Body     | string                   | The name of the report being generated.                                                                                                 | Yes      |
+| **start_date** | Body     | Milliseconds since epoch | The date to start the report data in milliseconds since UNIX Epoch.                                                                      | Yes      |
+| **end_date**   | Body     | Milliseconds since epoch | The date to end the report data in milliseconds since UNIX Epoch.                                                                        | Yes      |
+| **group_ids**  | Body     | string[]                 | List of the group ids you want to generate the report about.                                                                             | Yes      |
+| **Accept**     | Header   | Mime type                | The format you want the report to be in. Supported values are `application/json`, `text/csv`, `application/vnd.openxmlformats-officedocument.spreadsheetml.sheet`, and `*/*`. It defaults to `application/json`. | Yes      |
+
+## Response
+
+#### Status
+
+| Code | Description                           |
+| ---- | ------------------------------------- |
+| 200  | The report was generated successfully. |
+| 401  | Unauthorized.                         |
+
+#### Example Response
+
+```json
+{
+    "start_date": "01/01/2024",
+    "end_date": "04/12/2024",
+    "total_questions": 41,
+    "average_adjusted_response_time_in_minutes": 43615.19,
+    "questions_count_by_discipline": {
+        "Matemática": 41
+    },
+    "active_users_percentage": 1,
+    "average_answer_rating": null,
+    "average_nps": null,
+    "average_response_time_nps": null,
+    "nps_answers": [],
+    "answer_ratings": [],
+    "students": [
+        {
+            "name": "Aluno Teste",
+            "groups": [
+                "Turma de Testes"
+            ],
+            "email": "student@stift.com.br",
+            "active": true,
+            "created_at": "2023-04-26",
+            "blocked_at": null,
+            "deleted_at": null,
+            "questions_count": 41,
+            "questions": [
+                {
+                    "discipline": {
+                        "id": 1,
+                        "name": "Matemática"
+                    },
+                    "subject": {
+                        "id": 1,
+                        "name": "Álgebra"
+                    }
+                },
+                {
+                    "discipline": {
+                        "id": 1,
+                        "name": "Matemática"
+                    },
+                    "subject": {
+                        "id": 1,
+                        "name": "Álgebra"
+                    }
+                }
+            ]
+        }
+    ],
+    "teachers": [
+        {
+            "first_name": "Professor",
+            "last_name": "Teste",
+            "email": "teacher@stift.com.br",
+            "groups": [
+                "Turma de Testes"
+            ],
+            "disciplines": [
+                "Matemática"
+            ],
+            "active": true,
+            "answered_questions_count": 3,
+            "average_response_time_in_minutes": 43615.19,
+            "created_at": "2023-04-26",
+            "blocked_at": null,
+            "deleted_at": null
+        },
+        {
+            "first_name": "Prof Luccas",
+            "last_name": "Santos",
+            "email": "teacher2@stift.com.br",
+            "groups": [
+                "Turma de Testes"
+            ],
+            "disciplines": [],
+            "active": false,
+            "answered_questions_count": 0,
+            "average_response_time_in_minutes": null,
+            "created_at": "2024-06-03",
+            "blocked_at": null,
+            "deleted_at": null
+        }
+    ],
+    "disciplines": [
+        {
+            "name": "Matemática",
+            "top_subjects": {
+                "Álgebra": 38,
+                "Aritmética": 2,
+                "Análise combinatória": 1
+            },
+            "total_questions": 41,
+            "average_response_time_in_minutes": 3191.36
+        }
+    ]
+}
+```
+
