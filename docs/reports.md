@@ -176,7 +176,7 @@ POST /reports/bookings-workload
 ```
 
 
-# Groups Usage Report
+## Groups Usage Report
 
 To generate a Groups Usage report, send the following `POST` request:
 
@@ -184,9 +184,9 @@ To generate a Groups Usage report, send the following `POST` request:
 POST /reports/groups-usage
 ```
 
-## Request
+### Request
 
-### Parameters
+#### Parameters
 
 | Parameter      | Location | Type                     | Description                                                                                                                              | Required |
 | -------------- | -------- | ------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------- | -------- |
@@ -196,7 +196,7 @@ POST /reports/groups-usage
 | **group_ids**  | Body     | string[]                 | List of the group ids you want to generate the report about.                                                                             | Yes      |
 | **Accept**     | Header   | Mime type                | The format you want the report to be in. Supported values are `application/json`, `text/csv`, `application/vnd.openxmlformats-officedocument.spreadsheetml.sheet`, and `*/*`. It defaults to `application/json`. | Yes      |
 
-## Response
+### Response
 
 #### Status
 
