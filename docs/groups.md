@@ -25,6 +25,7 @@ POST /groups
 | Parameter                   | Location | Type                           | Description                                                       | Required |
 | --------------------------- | -------- | ------------------------------ | ----------------------------------------------------------------- | -------- |
 | **name**                    | Body     | string                         | Group's name                                                      | Yes      |
+| **school**                  | Body     | Object with parameter id       | School id                                                         | No       |
 | **discipline_restrictions** | Body     | [Discipline[]](disciplines.md) | Disciplines the group has access to                               | Yes      |
 | **business_model**          | Body     | string                         | Group's [business model](./#business-model)                       | Yes      |
 | **copy**                    | Body     | [Copy](#copy)                  | Copy object if you want to base the new group on an existing one. | No       |
@@ -54,6 +55,9 @@ If you want to create a new group based on an existing one, you can use the `cop
 {
   "name": "Extensivo 2023.2",
   "business_model": "B2B_OUTSOURCING",
+  "school": {
+    "id": "a6312d26-42c6-45dd-8eeb-5a6f85a1834f"
+  },
   "discipline_restrictions": [
     {
       "id": 1
