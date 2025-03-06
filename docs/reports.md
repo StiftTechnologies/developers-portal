@@ -77,8 +77,8 @@ POST /reports/bookings
 
 | Parameter      | Location | Type                     | Description                                                                                                                                                                          | Required |
 | -------------- | -------- | ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------- |
-| **start_date** | Body     | Milliseconds since epoch | The date to start the report data in milliseconds since UNIX Epoch. For scheduled meetings, considers the date the booking is scheduled for.                                         | Yes      |
-| **end_date**   | Body     | Milliseconds since epoch | The date to end the report data in milliseconds since UNIX Epoch. For scheduled meetings, considers the date the booking is scheduled for.                                           | Yes      |
+| **start_date** | Body     | Milliseconds since epoch | The date to start the report data in milliseconds since UNIX Epoch. For scheduled meetings, considers the date the booking was scheduled at.                                         | Yes      |
+| **end_date**   | Body     | Milliseconds since epoch | The date to end the report data in milliseconds since UNIX Epoch. For scheduled meetings, considers the date the booking was scheduled at.                                           | Yes      |
 | **school_ids** | Body     | string[]                 | List of the school ids you want to generate the report about. If not specified, it will bring data about all schools you have access to.                                             | No       |
 | **Accept**     | Header   | Mime type                | The format you want the report to be in. Supported values are `application/json` and `text/csv`. It defaults to `application/json`. In CSV mode, column names will be in Portuguese. | No       |
 
