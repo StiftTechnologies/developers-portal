@@ -128,6 +128,8 @@ POST /reports/bookings
     "booking_room_modal": "Online",
     "rating_by_student": 4.9,
     "rating_by_teacher": "",
+    "call_quality_rating_by_student": "",
+    "call_quality_rating_by_teacher": 5.0,
     "status": "Pendente",
     "cancelled_at": "",
     "cancelled_by_name": ""
