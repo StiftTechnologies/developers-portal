@@ -1,0 +1,151 @@
+---
+alwaysApply: true
+---
+
+# Documentation Guidelines
+
+Based on the existing documentation style in the Stift API docs, follow these guidelines when writing or updating documentation:
+
+## Structure & Organization
+
+### File Naming
+- Use kebab-case for file names (e.g., `auth_integration.md`, `user_management.md`)
+- Keep names descriptive and concise
+- Use `.md` extension for all documentation files
+
+### Document Structure
+1. **Main Title** - Use single `#` for the document title
+2. **Introduction** - Brief description of what the module/feature does
+3. **Sections** - Use `##` for major sections (e.g., "Create a user", "List groups")
+4. **Subsections** - Use `###` and `####` for nested organization
+
+### Section Organization for API Endpoints
+For each API endpoint, follow this exact structure:
+```
+## [Action] [Resource]
+Brief description of what this endpoint does.
+
+```http
+[METHOD] /endpoint/path
+```
+
+### Request
+#### Parameters
+[Parameter table]
+
+#### Example
+[JSON example]
+
+### Response
+#### Status
+[Status code table]
+
+#### Example
+[JSON response example]
+```
+
+## Content Guidelines
+
+### Writing Style
+- Use clear, concise language
+- Write in second person ("you can", "send this request")
+- Use present tense
+- Be direct and actionable (e.g., "If you want to create a user, send this POST request:")
+
+### API Documentation Patterns
+- Always include HTTP method and endpoint in code blocks
+- Use consistent parameter table format with columns: Parameter, Location, Type, Description, Required
+- Bold parameter names in tables using `**parameter_name**`
+- Include both request and response examples
+- Always document status codes with descriptions
+
+### Code Blocks
+- Use `http` for HTTP requests
+- Use `json` for JSON payloads and responses
+- Add titles to JSON code blocks when helpful: ` ```json title="Response Code: 401 Unauthorized" `
+- Format JSON with proper indentation (2 spaces)
+
+### Parameter Tables
+Use this exact format:
+```markdown
+| Parameter      | Location | Type   | Description          | Required |
+| -------------- | -------- | ------ | -------------------- | -------- |
+| **parameter**  | Body     | string | Parameter description| Yes      |
+```
+
+### Status Code Tables
+Use this exact format:
+```markdown
+| Code | Description                           |
+| ---- | ------------------------------------- |
+| 200  | The operation was successful.         |
+| 401  | Unauthorized.                         |
+```
+
+### Cross-References
+- Use relative links to other documentation files: `[Groups](groups.md)`
+- Link to specific sections using anchors: `[business model](./#business-model)`
+- Use inline code formatting for API values: `application/json`
+
+### Lists and Enums
+- Use bullet points with `-` for unordered lists
+- Bold enum values and include descriptions:
+  ```markdown
+  - **STUDENT**: Can only access the student's app and view their own data.
+  - **TEACHER**: Can only access the teacher's app and answer questions.
+  ```
+
+### Important Information
+- Use bold text for critical information: **To allow unlimited questions, set `remaining_questions` to -1.**
+- Use backticks for inline code, parameter names, and values
+- Use code blocks for longer code snippets
+
+### Examples
+- Always provide complete, realistic examples
+- Use consistent placeholder data (e.g., stift.com.br emails, UUIDs)
+- Include both minimal and complete examples when helpful
+
+## Formatting Standards
+
+### Headers
+- H1 (`#`) for document title only
+- H2 (`##`) for main sections
+- H3 (`###`) for subsections (Request, Response)
+- H4 (`####`) for sub-subsections (Parameters, Status, Example)
+
+### Tables
+- Always include header row
+- Use proper alignment with `|` separators
+- Bold important column values
+- Keep descriptions concise but complete
+
+### JSON Formatting
+- Use 2-space indentation
+- Include trailing commas where appropriate
+- Use realistic example data
+- Format dates as ISO strings: `"2024-12-12T13:17:08.348Z"`
+
+### Special Sections
+- Use `### Business Model` or similar for explaining concepts
+- Include "Copy" subsections with `##### Copy` when documenting complex parameters
+- Add explanation paragraphs after parameter tables when needed
+
+## Quality Standards
+
+### Completeness
+- Document all parameters (required and optional)
+- Include all possible status codes
+- Provide both request and response examples
+- Explain business logic when relevant
+
+### Consistency
+- Use the same terminology throughout (e.g., "group_ids" not "groupIds")
+- Follow the same section ordering for all endpoints
+- Use consistent language patterns ("If you want to...")
+- Maintain consistent formatting for similar elements
+
+### Accuracy
+- Ensure examples are valid and realistic
+- Test all code snippets
+- Verify parameter types and requirements
+- Keep status codes current and accurate

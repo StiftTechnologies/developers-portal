@@ -1,0 +1,38 @@
+---
+description: Rules for creating new documentation files
+globs:
+  - "docs/*.md"
+alwaysApply: false
+---
+
+# Creating New Documentation Files
+
+When creating new documentation files, you MUST follow these steps:
+
+## 1. File Location
+- Create documentation files in the `docs/` directory
+- Use kebab-case for file names (e.g., `new-feature.md`, `api-endpoints.md`)
+
+## 2. Update mkdocs.yml Navigation
+**CRITICAL**: After creating any new documentation file, you MUST add it to the navigation section in `mkdocs.yml`.
+
+Add the new file to the `nav:` section like this:
+```yaml
+nav:
+  - index.md
+  - users.md
+  - groups.md
+  - bookings.md
+  - disciplines.md
+  - auth_integration.md
+  - webhooks.md
+  - reports.md
+  - your-new-file.md  # Add your new file here
+```
+
+The navigation order determines how pages appear in the documentation site. Place new files in a logical position within the existing structure.
+
+## 3. Follow Documentation Guidelines
+- Follow the existing documentation style and structure
+- Use the same formatting patterns as other docs in the repository
+- Include proper headers, sections, and examples
