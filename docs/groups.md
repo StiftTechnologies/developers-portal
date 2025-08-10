@@ -27,7 +27,7 @@ POST /groups
 | **name**                    | Body     | string                         | Group's name                                                      | Yes      |
 | **school**                  | Body     | Object with parameter id       | School id                                                         | No       |
 | **discipline_restrictions** | Body     | [Discipline[]](disciplines.md) | Disciplines the group has access to                               | Yes      |
-| **business_model**          | Body     | string                         | Group's [business model](./#business-model)                       | Yes      |
+| **business_model**          | Body     | string                         | Group's [business model](#business-model)                       | Yes      |
 | **copy**                    | Body     | [Copy](#copy)                  | Copy object if you want to base the new group on an existing one. | No       |
 
 ##### Copy
@@ -130,7 +130,7 @@ PATCH /groups/:id
 | **id**                      | URL Parameter | string                         | Group's id                                                        | Yes      |
 | **name**                    | Body          | string                         | Group's name                                                      | Yes      |
 | **discipline_restrictions** | Body          | [Discipline[]](disciplines.md) | Disciplines the group has access to                               | Yes      |
-| **business_model**          | Body          | string                         | Group's [business model](./#business-model)                       | Yes      |
+| **business_model**          | Body          | string                         | Group's [business model](#business-model)                       | Yes      |
 | **copy**                    | Body          | [Copy](#copy)                  | Copy object if you want to base the new group on an existing one. | No       |
 
 ##### Copy
