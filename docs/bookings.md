@@ -18,7 +18,10 @@ GET /bookings/availability-blocks
 
 ##### Parameters
 
-No parameters are needed for this request.
+| Parameter      | Location | Type                     | Description                                                                                                                                                                          | Required |
+| -------------- | -------- | ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------- |
+| **start_date** | Body     | Milliseconds since epoch | The date to start showing availability blocks in milliseconds since UNIX Epoch. If not specified, it defaults to the current year's start.                                         | No      |
+| **end_date**   | Body     | Milliseconds since epoch | The date to end showing availability blocks in milliseconds since UNIX Epoch. If not specified, it defaults to the current year's end.                                           | No      |
 
 #### Response
 
@@ -43,7 +46,11 @@ No parameters are needed for this request.
       "id": "f73c6e53-cdca-4f01-b64d-04b9346c9823",
       "first_name": "Teacher's first name",
       "last_name": "Teacher's last name",
-      "profile_photo_url": "https://sa-east-1-public-cdn.stift.com.br/resources/images/placeholders/profile_photo_placeholder.png"
+      "profile_photo_url": "https://sa-east-1-public-cdn.stift.com.br/resources/images/placeholders/profile_photo_placeholder.png",
+      "disciplines": [
+        {"name": "Mathematics"},
+        {"name": "Physics"}
+      ]
     },
     "created_by": {
       "id": "f73c6e53-cdca-4f01-b64d-04b9346c9823",
