@@ -346,3 +346,134 @@ All date fields accept Unix timestamps (milliseconds since epoch) and are return
 - Questions can be associated with multiple exams
 - When updating questions, only exams that the user has access to can be modified
 - Existing exam associations for inaccessible exams are preserved
+
+## Get Users Performance Data
+
+If you want to retrieve detailed performance data for students in exams, quizzes and questions, send this `GET` request:
+
+```http
+GET /exams/users
+```
+
+This endpoint returns aggregated statistics and event logs for each student based on the provided filters. Only students from groups the authenticated user has access to will be returned.
+
+### Request
+
+#### Parameters
+
+| Parameter       | Location | Type                 | Description                                             | Required |
+| --------------- | -------- | -------------------- | ------------------------------------------------------- | -------- |
+| **group_ids**   | Query    | string (CSV of UUIDs)| Comma-separated list of group UUIDs to filter students  | No       |
+| **school_id**   | Query    | string (UUID)        | Filter students by school ID                            | No       |
+| **exam_id**     | Query    | string (UUID)        | Filter results to a specific exam                       | No       |
+| **quiz_id**     | Query    | string (UUID)        | Filter results to a specific quiz                       | No       |
+| **question_id** | Query    | string (UUID)        | Filter results to a specific question                   | No       |
+| **start_date**  | Query    | number               | Unix timestamp (milliseconds) - filter events after     | No       |
+| **end_date**    | Query    | number               | Unix timestamp (milliseconds) - filter events before    | No       |
+
+**Note**: If no `group_ids` or `school_id` is provided, the endpoint returns data for all groups the authenticated user has access to.
+
+#### Example
+
+```http
+GET /exams/users?group_ids=550e8400-e29b-41d4-a716-446655440000,660e8400-e29b-41d4-a716-446655440001&exam_id=770e8400-e29b-41d4-a716-446655440002&start_date=1640995200000&end_date=1672531200000
+```
+
+### Response
+
+#### Status
+
+| Code | Description                           |
+| ---- | ------------------------------------- |
+| 200  | Successfully retrieved user data.     |
+| 401  | Unauthorized.                         |
+| 403  | Forbidden - insufficient permissions. |
+
+#### Body
+
+Returns an array of student objects with their performance statistics:
+
+| Field                              | Type   | Description                                                              |
+| ---------------------------------- | ------ | ------------------------------------------------------------------------ |
+| **id**                             | string | Student UUID                                                             |
+| **first_name**                     | string | Student's first name                                                     |
+| **last_name**                      | string | Student's last name                                                      |
+| **profile_photo_url**              | string | URL to the student's profile photo                                       |
+| **total_exams_count**              | number | Total number of exams the student has answered questions in              |
+| **total_quizzes_count**            | number | Total number of quizzes the student has answered questions in            |
+| **total_questions_seen_count**     | number | Total number of questions the student has viewed                         |
+| **total_questions_answered_count** | number | Total number of questions the student has answered                       |
+| **correct_answers_count**          | number | Number of questions answered correctly on first attempt                  |
+| **average_answer_time**            | number | Average time in seconds between viewing a question and answering it      |
+| **average_answers_until_correct**  | number | Average number of attempts until correct answer (for multiple-answer questions) |
+| **events**                         | array  | Array of event objects representing student activity                     |
+
+#### Event Object
+
+Events are listed in chronological order. A user can have multiple events for the same question, exam or quiz. A question, if configured to allow multiple answers, will have multiple events for the same question.
+
+| Field          | Type   | Description                                                    |
+| -------------- | ------ | -------------------------------------------------------------- |
+| **event**      | string | Event type: `CORRECT_ANSWER`, `WRONG_ANSWER`, or `QUESTION_VIEW` |
+| **created_at** | string | ISO 8601 timestamp of when the event occurred                  |
+| **question_id**| string | UUID of the question                                           |
+| **exam_id**    | string | UUID of the exam (null if from not from an exam)                         |
+| **quiz_id**    | string | UUID of the quiz (null if from not from a quiz)                        |
+
+#### Example Response
+
+```json
+[
+  {
+    "id": "550e8400-e29b-41d4-a716-446655440000",
+    "first_name": "John",
+    "last_name": "Doe",
+    "profile_photo_url": "https://example.com/photos/john.jpg",
+    "total_exams_count": 3,
+    "total_quizzes_count": 5,
+    "total_questions_seen_count": 45,
+    "total_questions_answered_count": 42,
+    "correct_answers_count": 35,
+    "average_answer_time": 28.5,
+    "average_answers_until_correct": 1.3,
+    "events": [
+      {
+        "event": "QUESTION_VIEW",
+        "created_at": "2024-01-15T10:30:00.000Z",
+        "question_id": "123e4567-e89b-12d3-a456-426614174000",
+        "exam_id": "770e8400-e29b-41d4-a716-446655440002",
+        "quiz_id": null
+      },
+      {
+        "event": "CORRECT_ANSWER",
+        "created_at": "2024-01-15T10:30:45.000Z",
+        "question_id": "123e4567-e89b-12d3-a456-426614174000",
+        "exam_id": "770e8400-e29b-41d4-a716-446655440002",
+        "quiz_id": null
+      }
+    ]
+  },
+  {
+    "id": "660e8400-e29b-41d4-a716-446655440001",
+    "first_name": "Jane",
+    "last_name": "Smith",
+    "profile_photo_url": null,
+    "total_exams_count": 2,
+    "total_quizzes_count": 3,
+    "total_questions_seen_count": 30,
+    "total_questions_answered_count": 28,
+    "correct_answers_count": 22,
+    "average_answer_time": 35.2,
+    "average_answers_until_correct": 1.5,
+    "events": []
+  }
+]
+```
+
+### Statistics Calculation
+
+The endpoint calculates statistics as follows:
+
+- **correct_answers_count**: Counts questions where the first answer event was `CORRECT_ANSWER`
+- **average_answer_time**: Calculates the time between the last `QUESTION_VIEW` event and the answer event for each question
+- **average_answers_until_correct**: Only calculated for questions with `allow_multiple_answers` enabled; counts wrong attempts + 1 for each question
