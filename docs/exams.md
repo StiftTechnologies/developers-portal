@@ -22,7 +22,11 @@ Questions can be assigned difficulty levels to help with proper assessment distr
 
 ### Group Access Control
 
-Users can only create and update questions and exams for groups they have access to:
+Users can only create and update questions and exams for groups they have access to.
+
+### School Ownership
+
+Questions must belong to a school that the authenticated user has access to. The `belongs_to` field specifies which school owns the question. Users can only create or update questions for schools they are associated with.
 
 ## Create Question
 
@@ -38,6 +42,8 @@ POST /exams/questions-db
 
 | Parameter                                 | Location | Type             | Description                                                             | Required |
 | ----------------------------------------- | -------- | ---------------- | ----------------------------------------------------------------------- | -------- |
+| **belongs_to**                            | Body     | object           | School owner of the question                                            | Yes      |
+| **belongs_to.id**                         | Body     | string (UUID)    | UUID of the school that owns this question                              | Yes      |
 | **description**                           | Body     | string           | The question description/text in markdown format                        | Yes      |
 | **discipline_id**                         | Body     | number           | ID of the discipline this question belongs to                           | Yes      |
 | **subject**                               | Body     | number \| string | Subject ID (existing) or subject name (new)                             | Yes      |
@@ -67,6 +73,9 @@ POST /exams/questions-db
 
 ```json
 {
+  "belongs_to": {
+    "id": "880e8400-e29b-41d4-a716-446655440002"
+  },
   "description": "O Atomiuim, representado na imagem é umdos principais pontos turísticos de Bruxelas. Ele foi construído em 1958 para a primeira grande exposição mundial depois da Segunda Guerra Mundial, a Feira Mundial de Bruxelas. Trata-se de uma estrutura metálica construída no formato de um cubo. Essa estrutura está apoiada por um dos vértices sobre uma base paralela ao plano do solo, e a diagonal do cubo, contendo esse vértice, é ortogonal ao plano da base. Centradas nos vértices desse cubo, foram construídas oito esferas metálicas, e uma outra esfera foi construída centrada no ponto de interseção das diagonais do cubo. As oito esferas sobre os vértices são interligadas segundo suas arestas, e a esfera central se conecta a elas pelas diagonais do cubo. Todas essas interligações são feitas por tubos cilíndricos que possuem escadas em seu interior, permitindo o deslocamento de pessoas pela parte interna da estrutura. Na diagonal ortogonal à base, o deslocamento é feito por um elevador, que permite o deslocamento entre as esferas da base e a esfera do ponto mais alto, passando pela esfera central. Considere um visitante que se deslocou pelo interior do Atomium sempre em linha reta e seguindo o menor trajeto entre dois vértices, passando por todas as arestas e todas as diagonais do cubo.\n![](https://us-east-1-ugc-cdn.stift.com.br/quiz-questions/attachments/1442427b-0cdd-4a10-a046-f4a4591acb6f.png)\nDisponível em: http://trupedatrip.com. Acesso em: 25 out. 2019. A projeção ortogonal sobre o plano do solo do trajeto percorrido por esse visitante é representada por",
   "discipline_id": 1,
   "subject": "Projeção Ortogonal",
@@ -144,12 +153,15 @@ PATCH /exams/questions-db/:questionId
 | -------------- | -------- | ------------- | ------------------------------ | -------- |
 | **questionId** | URL      | string (UUID) | UUID of the question to update | Yes      |
 
-All request body parameters are the same as [Create Question](#create-question). All fields are required even when updating.
+All request body parameters are the same as [Create Question](#create-question), including `belongs_to`. All fields are required even when updating.
 
 #### Example
 
 ```json
 {
+  "belongs_to": {
+    "id": "880e8400-e29b-41d4-a716-446655440002"
+  },
   "description": "What is the capital and largest city of France?",
   "discipline_id": 1,
   "subject": 5,
