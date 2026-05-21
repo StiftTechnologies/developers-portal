@@ -26,7 +26,7 @@ POST /groups
 | --------------------------- | -------- | ------------------------------ | ----------------------------------------------------------------- | -------- |
 | **name**                    | Body     | string                         | Group's name                                                      | Yes      |
 | **school**                  | Body     | Object with parameter id       | School id                                                         | No       |
-| **discipline_restrictions** | Body     | [Discipline[]](disciplines.md) | Disciplines the group has access to                               | Yes      |
+| **disciplines** | Body     | [Discipline[]](disciplines.md) | Disciplines the group has access to                               | Yes      |
 | **business_model**          | Body     | string                         | Group's [business model](#business-model)                       | Yes      |
 | **copy**                    | Body     | [Copy](#copy)                  | Copy object if you want to base the new group on an existing one. | No       |
 
@@ -34,7 +34,7 @@ POST /groups
 
 If you want to create a new group based on an existing one, you can use the `copy` parameter. It must have the `id` of the group you want to copy. You must also specify what you want to copy from the group. The copied group's parameters will override other specified parameters. The available options are:
 
-- **discipline_restrictions (boolean)**: Copy the disciplines the source group has.
+- **disciplines (boolean)**: Copy the disciplines the source group has.
 - **teachers (boolean)**: Copy the teachers the source group has.
 - **cost_preference (boolean)**: Copy the cost preference the source group has.
 
@@ -43,7 +43,7 @@ If you want to create a new group based on an existing one, you can use the `cop
 ```json
 {
   "id": "7033d947-e140-4a83-86b3-cd8ffcb87913",
-  "discipline_restrictions": true,
+  "disciplines": true,
   "teachers": true,
   "cost_preference": true
 }
@@ -58,7 +58,7 @@ If you want to create a new group based on an existing one, you can use the `cop
   "school": {
     "id": "a6312d26-42c6-45dd-8eeb-5a6f85a1834f"
   },
-  "discipline_restrictions": [
+  "disciplines": [
     {
       "id": 1
     },
@@ -71,7 +71,7 @@ If you want to create a new group based on an existing one, you can use the `cop
   ],
   "copy": {
     "id": "7033d947-e140-4a83-86b3-cd8ffcb87913",
-    "discipline_restrictions": true,
+    "disciplines": true,
     "teachers": true,
     "cost_preference": true
   }
@@ -98,7 +98,7 @@ If you want to create a new group based on an existing one, you can use the `cop
     "id": "a6312d26-42c6-45dd-8eeb-5a6f85a1834f"
   },
   "business_model": "B2B_OUTSOURCING",
-  "discipline_restrictions": [
+  "disciplines": [
     {
       "id": 1
     },
@@ -129,7 +129,7 @@ PATCH /groups/:id
 | --------------------------- | ------------- | ------------------------------ | ----------------------------------------------------------------- | -------- |
 | **id**                      | URL Parameter | string                         | Group's id                                                        | Yes      |
 | **name**                    | Body          | string                         | Group's name                                                      | Yes      |
-| **discipline_restrictions** | Body          | [Discipline[]](disciplines.md) | Disciplines the group has access to                               | Yes      |
+| **disciplines** | Body          | [Discipline[]](disciplines.md) | Disciplines the group has access to                               | Yes      |
 | **business_model**          | Body          | string                         | Group's [business model](#business-model)                       | Yes      |
 | **copy**                    | Body          | [Copy](#copy)                  | Copy object if you want to base the new group on an existing one. | No       |
 
@@ -137,7 +137,7 @@ PATCH /groups/:id
 
 If you want to patch a group based on an existing one, you can use the `copy` parameter. It must have the `id` of the group you want to copy. You must also specify what you want to copy from the group. The copied group's parameters will override other specified parameters. The available options are:
 
-- **discipline_restrictions (boolean)**: Copy the disciplines the source group has.
+- **disciplines (boolean)**: Copy the disciplines the source group has.
 - **teachers (boolean)**: Copy the teachers the source group has.
 - **cost_preference (boolean)**: Copy the cost preference the source group has.
 
@@ -146,7 +146,7 @@ If you want to patch a group based on an existing one, you can use the `copy` pa
 ```json
 {
   "id": "7033d947-e140-4a83-86b3-cd8ffcb87913",
-  "discipline_restrictions": true,
+  "disciplines": true,
   "teachers": true,
   "cost_preference": true
 }
@@ -158,7 +158,7 @@ If you want to patch a group based on an existing one, you can use the `copy` pa
 {
   "name": "Extensivo 2023.2",
   "business_model": "B2B_OUTSOURCING",
-  "discipline_restrictions": [
+  "disciplines": [
     {
       "id": 1
     },
@@ -171,7 +171,7 @@ If you want to patch a group based on an existing one, you can use the `copy` pa
   ],
   "copy": {
     "id": "7033d947-e140-4a83-86b3-cd8ffcb87913",
-    "discipline_restrictions": true,
+    "disciplines": true,
     "teachers": true,
     "cost_preference": true
   }
@@ -198,7 +198,7 @@ If you want to patch a group based on an existing one, you can use the `copy` pa
     "id": "a6312d26-42c6-45dd-8eeb-5a6f85a1834f"
   },
   "business_model": "B2B_OUTSOURCING",
-  "discipline_restrictions": [
+  "disciplines": [
     {
       "id": 1
     },
