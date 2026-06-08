@@ -32,4 +32,5 @@ nav:
   - auth_integration.md
   - webhooks.md
   - reports.md
+  - bug-reports.md
   - exams.md
