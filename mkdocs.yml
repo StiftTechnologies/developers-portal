@@ -27,6 +27,9 @@ nav:
   - index.md
   - users.md
   - groups.md
+  - doubts.md
+  - questions.md
+  - configs.md
   - bookings.md
   - disciplines.md
   - auth_integration.md
