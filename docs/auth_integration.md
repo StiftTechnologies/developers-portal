@@ -66,3 +66,30 @@ We provide a QR Code encoded in base64 in the response. You can use it to show t
 ```
 
 ![QR Code](data:image/png;base64,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)
+
+## Embedding the app in an iframe
+
+If you want to show Stift inside your own page, embed the web app in an `iframe` and append `&embed=1` to the `login_url` returned by [Generate a login code](#generate-a-login-code):
+
+```html
+<iframe
+  src="https://app.stift.com.br/?code=000625ecbde61529269d80bfeef215fbed143a8039d2be54&embed=1"
+  allow="camera; microphone; clipboard-write; fullscreen"
+  style="width: 100%; height: 100%; border: 0"
+></iframe>
+```
+
+In embed mode the app:
+
+- Shows only a centered loading indicator while it signs the user in, instead of the splash, onboarding and login screens.
+- Never shows its own login screen. If the code is invalid, expired or already used, or the session was lost, it shows the message _"Ops, não conseguimos validar seu acesso. Por favor, tente atualizar a página."_
+- Hides the logout option, since your page owns the login.
+- Stays in embed mode if the page reloads inside the iframe.
+
+Recommendations:
+
+- **Generate a new login code every time your page loads the iframe.** Codes are single-use and expire in 5 minutes, so a cached `login_url` fails on the next visit and the user sees the message above.
+- Don't add a `sandbox` attribute to the iframe. If you must, allow at least `allow-scripts allow-same-origin allow-forms allow-popups allow-downloads`.
+- Keep `allow="camera; microphone"`. Students use them to photograph questions and record audio.
+- The session lives in the iframe's own storage, which browsers keep separate from `app.stift.com.br` and may clear (Safari in particular). Logging in again with a fresh code covers it.
+- Push notifications aren't available inside an iframe.
