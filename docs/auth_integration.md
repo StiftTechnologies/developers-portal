@@ -78,6 +78,8 @@ To send a teacher to the Portal instead of the app:
 
 With `"target": "PORTAL"`, or for a group admin, `login_url` points to the Portal (`https://portal.stift.com.br/?code=...`) and `qr_code` encodes that link.
 
+For schools that use a white-label brand, `login_url` points to that brand's app or Portal domain instead of `stift.com.br`. Always use `login_url` as returned; don't build the link yourself from `code`.
+
 <br /><br />
 
 We provide a QR Code encoded in base64 in the response. You can use it to show the QR Code image as follows:
