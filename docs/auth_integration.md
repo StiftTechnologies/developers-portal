@@ -33,7 +33,7 @@ POST /auth/codes
 | ----------- | ---------------- | ------------ | -------------------------------------------------------------------------------------------------- |
 | Student     | `APP`            | —            | Must share at least one group with the API key's user.                                             |
 | Teacher     | `APP`            | `PORTAL`     | Must share at least one group with the API key's user and be one of your school's teachers (not a Stift tutor). `PORTAL` only if the school enabled Portal access for this teacher. |
-| Group admin | `PORTAL`         | —            | Every group they manage must also be a group of the API key's user.                                 |
+| Group admin | `PORTAL`         | —            | Every school and group they manage must also be managed by the API key's user.                      |
 
 Each call returns a single code for a single destination. Codes are single-use, so if you want to offer a teacher both the app and the Portal, make two calls and use one `login_url` for each.
 
