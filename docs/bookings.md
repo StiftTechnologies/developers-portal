@@ -72,7 +72,7 @@ This list contains every room that belongs to your schools. If a room in this li
 | ---- | ---------------------------------------- |
 | 200  | The booking rooms were fetched.          |
 | 401  | Unauthorized.                            |
-| 403  | The API key does not belong to a group admin. |
+| 403  | The user type of the API key cannot use this request. |
 
 #### Example
 
@@ -132,7 +132,7 @@ GET /bookings/{booking_room_id}/credits
 | ---- | ------------------------------------------------------------- |
 | 200  | The credits were fetched.                                     |
 | 401  | Unauthorized.                                                 |
-| 403  | The API key does not belong to a group admin.                 |
+| 403  | The user type of the API key cannot use this request. |
 
 #### Example
 
@@ -191,7 +191,7 @@ The teacher `status` is one of these values:
 | ---- | ------------------------------------------------------------- |
 | 200  | The available schedules were fetched.                         |
 | 401  | Unauthorized.                                                 |
-| 403  | The API key does not belong to a group admin.                 |
+| 403  | The user type of the API key cannot use this request. |
 | 404  | `Booking room not found`. See [Access rules](#access-rules).  |
 
 #### Example
@@ -360,7 +360,7 @@ To get the teacher of a meeting, use [Get a booking](#get-a-booking).
 | ---- | --------------------------------------------- |
 | 200  | The meetings were fetched.                    |
 | 401  | Unauthorized.                                 |
-| 403  | The API key does not belong to a group admin. |
+| 403  | The user type of the API key cannot use this request. |
 
 #### Example
 
@@ -430,7 +430,7 @@ The response contains these fields:
 | ---- | --------------------------------------------- |
 | 200  | The meeting was fetched.                      |
 | 401  | Unauthorized.                                 |
-| 403  | The API key does not belong to a group admin. |
+| 403  | The user type of the API key cannot use this request. |
 | 404  | `Scheduled meeting not found`.                |
 
 ## Move a booking
@@ -512,7 +512,7 @@ You can cancel a meeting until its booked end time. When a group admin cancels a
 | ---- | ----------------------------------------------------------------------------------- |
 | 200  | The meeting was cancelled.                                                          |
 | 401  | Unauthorized.                                                                       |
-| 403  | The API key does not belong to a group admin.                                       |
+| 403  | The user type of the API key cannot use this request. |
 | 404  | `Meeting not found`: the meeting does not exist, ended, or is already cancelled.    |
 
 #### Example
