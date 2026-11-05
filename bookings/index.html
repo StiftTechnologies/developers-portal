@@ -1,0 +1,3297 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../configs/">
+      
+      
+        <link rel="next" href="../disciplines/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
+    
+    
+  <title>Stift Developers</title>
+
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.57a0d79d.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.fb2fffe2.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#bookings" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="" class="md-header__button md-logo" aria-label="" data-md-component="logo">
+      
+  <img src="../assets/logo_white.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Bookings
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="" class="md-nav__button md-logo" aria-label="" data-md-component="logo">
+      
+  <img src="../assets/logo_white.svg" alt="logo">
+
+    </a>
+    
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting started
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../users/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Users
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../groups/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Groups
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../doubts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Doubts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../questions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Questions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bookings
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bookings
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Concepts
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Concepts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#access-rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Access rules
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#meeting-status" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Meeting status
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#book-a-meeting-for-a-student" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Book a meeting for a student
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#get-booking-rooms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Get booking rooms
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Get booking rooms">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#request" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Request
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Request">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Parameters
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#response" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Response
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Response">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#status" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Status
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#get-student-credits" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Get student credits
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Get student credits">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#request_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Request
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Request">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameters_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Parameters
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#response_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Response
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Response">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#status_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Status
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#get-available-schedules" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Get available schedules
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Get available schedules">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#request_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Request
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Request">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameters_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Parameters
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#response_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Response
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Response">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#status_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Status
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-a-booking" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Create a booking
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Create a booking">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#request_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Request
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Request">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameters_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Parameters
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#response_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Response
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Response">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#status_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Status
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#get-bookings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Get bookings
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Get bookings">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#request_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Request
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Request">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameters_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Parameters
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#response_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Response
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Response">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#status_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Status
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#get-a-booking" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Get a booking
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Get a booking">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#request_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Request
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Request">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameters_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Parameters
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#response_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Response
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Response">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#status_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Status
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#move-a-booking" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Move a booking
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Move a booking">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#request_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Request
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Request">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameters_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Parameters
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#response_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Response
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Response">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#status_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Status
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cancel-a-booking" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cancel a booking
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Cancel a booking">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#request_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Request
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Request">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameters_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Parameters
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#response_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Response
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Response">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#status_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Status
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#availability-blocks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Availability Blocks
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Availability Blocks">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get-availability-blocks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Get Availability Blocks
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Get Availability Blocks">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#request_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Request
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Request">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameters_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Parameters
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#response_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Response
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Response">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#status_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Status
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../disciplines/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Disciplines
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../auth_integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Auth Integration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../webhooks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Webhooks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reports/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reports
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bug-reports/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bug Reports
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../exams/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exams
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Concepts
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Concepts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#access-rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Access rules
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#meeting-status" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Meeting status
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#book-a-meeting-for-a-student" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Book a meeting for a student
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#get-booking-rooms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Get booking rooms
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Get booking rooms">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#request" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Request
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Request">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Parameters
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#response" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Response
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Response">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#status" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Status
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#get-student-credits" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Get student credits
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Get student credits">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#request_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Request
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Request">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameters_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Parameters
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#response_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Response
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Response">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#status_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Status
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#get-available-schedules" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Get available schedules
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Get available schedules">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#request_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Request
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Request">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameters_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Parameters
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#response_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Response
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Response">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#status_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Status
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-a-booking" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Create a booking
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Create a booking">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#request_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Request
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Request">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameters_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Parameters
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#response_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Response
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Response">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#status_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Status
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#get-bookings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Get bookings
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Get bookings">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#request_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Request
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Request">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameters_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Parameters
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#response_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Response
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Response">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#status_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Status
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#get-a-booking" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Get a booking
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Get a booking">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#request_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Request
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Request">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameters_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Parameters
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#response_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Response
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Response">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#status_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Status
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#move-a-booking" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Move a booking
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Move a booking">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#request_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Request
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Request">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameters_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Parameters
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#response_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Response
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Response">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#status_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Status
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cancel-a-booking" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cancel a booking
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Cancel a booking">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#request_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Request
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Request">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameters_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Parameters
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#response_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Response
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Response">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#status_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Status
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#availability-blocks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Availability Blocks
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Availability Blocks">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get-availability-blocks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Get Availability Blocks
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Get Availability Blocks">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#request_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Request
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Request">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameters_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Parameters
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#response_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Response
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Response">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#status_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Status
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="bookings">Bookings</h1>
+<p>Bookings is a module that connects students and teachers through in-person or virtual calls on Stift's app.</p>
+<p>This page shows how a group admin uses an API key to book a meeting for a student. The API key must belong to a GROUP_ADMIN user. You create and configure booking rooms in the Portal. This page does not cover that configuration.</p>
+<h2 id="concepts">Concepts</h2>
+<ul>
+<li>Booking room: a space where students meet teachers. Each room has a discipline, a session length (<code>minutes_per_session</code>) and a list of teachers with weekly availability.</li>
+<li>Room type: a room is <code>SCHEDULE</code> or <code>QUEUE</code>. Students book a time in a <code>SCHEDULE</code> room. Students wait in line in a <code>QUEUE</code> room. You can book meetings only in <code>SCHEDULE</code> rooms.</li>
+<li>Scheduled meeting: one booking of one student with one teacher at a fixed time. This page also calls it a meeting.</li>
+<li>Credit: the right to book one meeting. Each booking uses one credit of the student. Credits come from the room configuration of the student's group, or from single credits that you give to a student in the Portal.</li>
+<li>Physical room: a real room that the school assigns to in-person meetings. If the booking room has physical rooms turned on, each in-person meeting gets a physical room.</li>
+</ul>
+<h3 id="access-rules">Access rules</h3>
+<p>The API checks these rules on each request:</p>
+<ul>
+<li>The booking room must be shared with at least one group of the API key's user.</li>
+<li>The student must be in one of those groups, and the student must not be blocked.</li>
+<li>The teacher must be in one of those groups, and the teacher must have availability in the room.</li>
+</ul>
+<p>If the room is not shared with your groups, or none of its teachers is in your groups, the API returns 404 <code>Booking room not found</code>.</p>
+<h3 id="meeting-status">Meeting status</h3>
+<p>The <code>status</code> field of a meeting has one of these values:</p>
+<table>
+<thead>
+<tr>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>PENDING</strong></td>
+<td>The meeting is in the future.</td>
+</tr>
+<tr>
+<td><strong>IN_PROGRESS</strong></td>
+<td>The meeting started and did not end.</td>
+</tr>
+<tr>
+<td><strong>PRESENT</strong></td>
+<td>The meeting started and ended.</td>
+</tr>
+<tr>
+<td><strong>ABSENT</strong></td>
+<td>The meeting time passed and the meeting did not start.</td>
+</tr>
+<tr>
+<td><strong>CANCELLED</strong></td>
+<td>Someone cancelled the meeting.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="book-a-meeting-for-a-student">Book a meeting for a student</h2>
+<p>Do these steps to book a meeting:</p>
+<ol>
+<li>Find the booking room with <a href="#get-booking-rooms">Get booking rooms</a>.</li>
+<li>Make sure that the student has credits with <a href="#get-student-credits">Get student credits</a>.</li>
+<li>Get the free times with <a href="#get-available-schedules">Get available schedules</a>.</li>
+<li>Pick a time and a teacher with the status <code>AVAILABLE</code> from that response.</li>
+<li>Book the meeting with <a href="#create-a-booking">Create a booking</a>.</li>
+</ol>
+<p>Use a time and a teacher from step 3. The create request does not compare your time with the teacher's weekly availability. It checks only availability blocks and other meetings of the teacher.</p>
+<h2 id="get-booking-rooms">Get booking rooms</h2>
+<p>To get the booking rooms of your schools, send this <code>GET</code> request:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="err">GET /bookings</span>
+</code></pre></div>
+<p>This list contains every room that belongs to your schools. If a room in this list is not shared with your groups, you cannot book in it. See <a href="#access-rules">Access rules</a>.</p>
+<h3 id="request">Request</h3>
+<h4 id="parameters">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Location</th>
+<th>Type</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>show_teachers</strong></td>
+<td>Query</td>
+<td>boolean</td>
+<td>If <code>true</code>, each room includes a <code>teachers</code> list. The default is <code>false</code>.</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<h3 id="response">Response</h3>
+<h4 id="status">Status</h4>
+<table>
+<thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>200</td>
+<td>The booking rooms were fetched.</td>
+</tr>
+<tr>
+<td>401</td>
+<td>Unauthorized.</td>
+</tr>
+<tr>
+<td>403</td>
+<td>The user type of the API key cannot use this request.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="example">Example</h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="p">[</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">  </span><span class="p">{</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6f1c2d3e-4b5a-4c6d-8e7f-9a0b1c2d3e4f"</span><span class="p">,</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mathematics tutoring"</span><span class="p">,</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">    </span><span class="nt">"minutes_per_session"</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SCHEDULE"</span><span class="p">,</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">    </span><span class="nt">"discipline"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mathematics"</span><span class="p">,</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">      </span><span class="nt">"icon_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://sa-east-1-public-cdn.stift.com.br/configs/disciplines/icons/ic_math.png"</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">    </span><span class="p">},</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">    </span><span class="nt">"teachers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">      </span><span class="p">{</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="w">        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f73c6e53-cdca-4f01-b64d-04b9346c9823"</span><span class="p">,</span>
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="w">        </span><span class="nt">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Teacher's first name"</span><span class="p">,</span>
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="w">        </span><span class="nt">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Teacher's last name"</span><span class="p">,</span>
+<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="w">        </span><span class="nt">"profile_photo_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://sa-east-1-public-cdn.stift.com.br/resources/images/placeholders/profile_photo_placeholder.png"</span>
+<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="w">      </span><span class="p">}</span>
+<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="w">    </span><span class="p">]</span>
+<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="w">  </span><span class="p">}</span>
+<a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="p">]</span>
+</code></pre></div>
+<p>Rooms of type <code>QUEUE</code> also include <code>queue_length</code> and <code>estimated_wait_time</code> (in minutes).</p>
+<h2 id="get-student-credits">Get student credits</h2>
+<p>To get the credits of a student in a booking room, send this <code>GET</code> request:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="err">GET /bookings/{booking_room_id}/credits</span>
+</code></pre></div>
+<h3 id="request_1">Request</h3>
+<h4 id="parameters_1">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Location</th>
+<th>Type</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>booking_room_id</strong></td>
+<td>Path</td>
+<td>string</td>
+<td>The id of the booking room.</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><strong>student_id</strong></td>
+<td>Query</td>
+<td>string</td>
+<td>The id of the student.</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<h3 id="response_1">Response</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>used</strong></td>
+<td>integer</td>
+<td>The number of credits that the student used.</td>
+</tr>
+<tr>
+<td><strong>available</strong></td>
+<td>integer</td>
+<td>The number of credits that the student can use now. <code>-1</code> means no limit.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="status_1">Status</h4>
+<table>
+<thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>200</td>
+<td>The credits were fetched.</td>
+</tr>
+<tr>
+<td>401</td>
+<td>Unauthorized.</td>
+</tr>
+<tr>
+<td>403</td>
+<td>The user type of the API key cannot use this request.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="example_1">Example</h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="p">{</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">  </span><span class="nt">"used"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">  </span><span class="nt">"available"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="p">}</span>
+</code></pre></div>
+<p>If <code>available</code> is <code>0</code>, the create request returns 403 <code>INSUFFICIENT_CREDITS</code>. To give the student more credits, change the room configuration of the student's group in the Portal, or give the student a single credit.</p>
+<h2 id="get-available-schedules">Get available schedules</h2>
+<p>To get the times that a student can book in a room, send this <code>GET</code> request:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="err">GET /bookings/{booking_room_id}/schedules</span>
+</code></pre></div>
+<p>The response covers the room's booking window, for example the next seven days. For group admins, the room's minimum scheduling notice does not apply. The response can contain times that start soon.</p>
+<h3 id="request_2">Request</h3>
+<h4 id="parameters_2">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Location</th>
+<th>Type</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>booking_room_id</strong></td>
+<td>Path</td>
+<td>string</td>
+<td>The id of the booking room.</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><strong>studentId</strong></td>
+<td>Query</td>
+<td>string</td>
+<td>The id of the student. If the student has a meeting in another room at a time, the response hides that time.</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><strong>rescheduleMeetingId</strong></td>
+<td>Query</td>
+<td>string</td>
+<td>The id of a meeting that you want to move. The time of this meeting shows as free.</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<p>The names of these query parameters are in camelCase. Send them exactly as written.</p>
+<h3 id="response_2">Response</h3>
+<p>The response is a list of times, from the earliest to the latest. Each item has these fields:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>date</strong></td>
+<td>string</td>
+<td>The start of the time, in ISO 8601 format and UTC. Send this value as <code>schedule_datetime</code>.</td>
+</tr>
+<tr>
+<td><strong>booked</strong></td>
+<td>boolean</td>
+<td><code>true</code> means that no teacher is free at this time.</td>
+</tr>
+<tr>
+<td><strong>scheduled_by_user</strong></td>
+<td>boolean</td>
+<td><code>true</code> means that the student already has a meeting at this time in this room.</td>
+</tr>
+<tr>
+<td><strong>teachers</strong></td>
+<td>array</td>
+<td>The teachers of the room at this time. Each item has <code>id</code>, <code>name</code> and <code>status</code>.</td>
+</tr>
+<tr>
+<td><strong>physical_rooms_ids</strong></td>
+<td>array of strings</td>
+<td>The free physical rooms at this time. If the room does not use physical rooms, this field is not present.</td>
+</tr>
+</tbody>
+</table>
+<p>The teacher <code>status</code> is one of these values:</p>
+<ul>
+<li><code>AVAILABLE</code>: the teacher is free. You can book this teacher.</li>
+<li><code>BOOKED_BY_USER</code>: the teacher has a meeting with this student at this time.</li>
+<li><code>UNAVAILABLE</code>: the teacher is not free.</li>
+</ul>
+<h4 id="status_2">Status</h4>
+<table>
+<thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>200</td>
+<td>The available schedules were fetched.</td>
+</tr>
+<tr>
+<td>401</td>
+<td>Unauthorized.</td>
+</tr>
+<tr>
+<td>403</td>
+<td>The user type of the API key cannot use this request.</td>
+</tr>
+<tr>
+<td>404</td>
+<td><code>Booking room not found</code>. See <a href="#access-rules">Access rules</a>.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="example_2">Example</h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="p">[</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">  </span><span class="p">{</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">    </span><span class="nt">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2026-11-05T13:00:00.000Z"</span><span class="p">,</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">    </span><span class="nt">"scheduled_by_user"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">    </span><span class="nt">"teachers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="w">      </span><span class="p">{</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f73c6e53-cdca-4f01-b64d-04b9346c9823"</span><span class="p">,</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="w">        </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AVAILABLE"</span><span class="p">,</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="w">        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Teacher's first name Teacher's last name"</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="w">      </span><span class="p">}</span>
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="w">    </span><span class="p">],</span>
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="w">    </span><span class="nt">"booked"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
+<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="w">  </span><span class="p">}</span>
+<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="p">]</span>
+</code></pre></div>
+<h2 id="create-a-booking">Create a booking</h2>
+<p>To book a meeting for a student, send this <code>POST</code> request:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="err">POST /bookings/{booking_room_id}/schedule</span>
+</code></pre></div>
+<p>The request uses one credit of the student. The meeting shows in the student's and the teacher's app.</p>
+<h3 id="request_3">Request</h3>
+<h4 id="parameters_3">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Location</th>
+<th>Type</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>booking_room_id</strong></td>
+<td>Path</td>
+<td>string</td>
+<td>The id of the booking room.</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><strong>action</strong></td>
+<td>Body</td>
+<td>string</td>
+<td>Use <code>SCHEDULE</code>.</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><strong>schedule_datetime</strong></td>
+<td>Body</td>
+<td>string</td>
+<td>The start of the meeting. Use a <code>date</code> value from <a href="#get-available-schedules">Get available schedules</a> without changes.</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><strong>student_id</strong></td>
+<td>Body</td>
+<td>string</td>
+<td>The id of the student.</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><strong>teacher_id</strong></td>
+<td>Body</td>
+<td>string</td>
+<td>The id of a teacher with the status <code>AVAILABLE</code> at that time.</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><strong>description</strong></td>
+<td>Body</td>
+<td>string</td>
+<td>A note about the meeting. The teacher can read it.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><strong>physical_room_id</strong></td>
+<td>Body</td>
+<td>string</td>
+<td>The id of a physical room from <code>physical_rooms_ids</code>. If the room does not use physical rooms, the API ignores this field. If you do not send it, the API picks a free physical room.</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><span class="filename">Request body</span><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="p">{</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">  </span><span class="nt">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SCHEDULE"</span><span class="p">,</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">  </span><span class="nt">"schedule_datetime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2026-11-05T13:00:00.000Z"</span><span class="p">,</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">  </span><span class="nt">"student_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3591f1c3-cf26-4f36-b4d2-d7078359c0d0"</span><span class="p">,</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="w">  </span><span class="nt">"teacher_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f73c6e53-cdca-4f01-b64d-04b9346c9823"</span><span class="p">,</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="w">  </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Review of chapter 4 exercises"</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="p">}</span>
+</code></pre></div>
+<h3 id="response_3">Response</h3>
+<p>The response contains the new meeting. Keep its <code>id</code>. You use the <code>id</code> to get, move or cancel the meeting. The response contains more fields than the example. Do not depend on fields that this page does not describe. To get the full meeting, use <a href="#get-a-booking">Get a booking</a>.</p>
+<h4 id="status_3">Status</h4>
+<table>
+<thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>200</td>
+<td>The meeting was booked.</td>
+</tr>
+<tr>
+<td>400</td>
+<td>A parameter is missing or has a wrong format.</td>
+</tr>
+<tr>
+<td>401</td>
+<td>Unauthorized.</td>
+</tr>
+<tr>
+<td>403</td>
+<td><code>UNAVAILABLE_DATE</code>: the time is in the past, the teacher is not free, or no physical room is free.</td>
+</tr>
+<tr>
+<td>403</td>
+<td><code>INSUFFICIENT_CREDITS</code>: the student has no credits in this room.</td>
+</tr>
+<tr>
+<td>403</td>
+<td><code>ACTIVE_BOOKING_BLOCK</code>: the student cannot book in this room now, for example after missed meetings.</td>
+</tr>
+<tr>
+<td>404</td>
+<td><code>Booking room not found</code>. See <a href="#access-rules">Access rules</a>.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="example_3">Example</h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="p">{</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0b8d3a51-2c4e-4f6a-9b1d-7e3f5a9c2d10"</span><span class="p">,</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">  </span><span class="nt">"scheduled_for"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2026-11-05T13:00:00.000Z"</span><span class="p">,</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="w">  </span><span class="nt">"scheduled_duration_in_minutes"</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="w">  </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Review of chapter 4 exercises"</span><span class="p">,</span>
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="w">  </span><span class="nt">"booking_room"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="w">    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6f1c2d3e-4b5a-4c6d-8e7f-9a0b1c2d3e4f"</span><span class="p">,</span>
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="w">    </span><span class="nt">"minutes_per_session"</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span>
+<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="w">  </span><span class="p">},</span>
+<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="w">  </span><span class="nt">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a><span class="w">    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3591f1c3-cf26-4f36-b4d2-d7078359c0d0"</span>
+<a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a><span class="w">  </span><span class="p">},</span>
+<a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a><span class="w">  </span><span class="nt">"teacher"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a><span class="w">    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f73c6e53-cdca-4f01-b64d-04b9346c9823"</span>
+<a id="__codelineno-8-15" name="__codelineno-8-15" href="#__codelineno-8-15"></a><span class="w">  </span><span class="p">},</span>
+<a id="__codelineno-8-16" name="__codelineno-8-16" href="#__codelineno-8-16"></a><span class="w">  </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2026-11-04T18:22:41.512Z"</span><span class="p">,</span>
+<a id="__codelineno-8-17" name="__codelineno-8-17" href="#__codelineno-8-17"></a><span class="w">  </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2026-11-04T18:22:41.512Z"</span>
+<a id="__codelineno-8-18" name="__codelineno-8-18" href="#__codelineno-8-18"></a><span class="p">}</span>
+</code></pre></div>
+<p><code>created_by</code> is the student. The API records the meeting as the student's booking.</p>
+<p>The <code>ACTIVE_BOOKING_BLOCK</code> error lists the blocks in <code>errors</code>:</p>
+<div class="highlight"><span class="filename">Response Code: 403 Forbidden</span><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="p">{</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">  </span><span class="nt">"error"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="w">    </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">403</span><span class="p">,</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="w">    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE_BOOKING_BLOCK"</span><span class="p">,</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="w">    </span><span class="nt">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="w">      </span><span class="p">{</span>
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="w">        </span><span class="nt">"no_show_window_hours"</span><span class="p">:</span><span class="w"> </span><span class="mi">720</span><span class="p">,</span>
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="w">        </span><span class="nt">"no_show_count_to_block"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span>
+<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="w">        </span><span class="nt">"no_show_block_duration_hours"</span><span class="p">:</span><span class="w"> </span><span class="mi">168</span><span class="p">,</span>
+<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a><span class="w">        </span><span class="nt">"reason"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a><span class="w">        </span><span class="nt">"end_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2026-11-10T12:00:00.000Z"</span>
+<a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a><span class="w">      </span><span class="p">}</span>
+<a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a><span class="w">    </span><span class="p">]</span>
+<a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a><span class="w">  </span><span class="p">}</span>
+<a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a><span class="p">}</span>
+</code></pre></div>
+<p>If the room sends an e-mail for each new booking, the student gets that e-mail and Stift sends the <code>SCHEDULED_MEETING_CREATED</code> <a href="../webhooks/#booking-events">webhook</a>. Otherwise, Stift does not send this webhook.</p>
+<h2 id="get-bookings">Get bookings</h2>
+<p>To get the meetings of all the rooms that are shared with your groups, send this <code>GET</code> request:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="err">GET /bookings/schedule</span>
+</code></pre></div>
+<p>To get the meetings of one room, send this <code>GET</code> request:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="err">GET /bookings/{booking_room_id}/schedule</span>
+</code></pre></div>
+<p>The list contains cancelled meetings unless you hide them. The newest meetings come first.</p>
+<h3 id="request_4">Request</h3>
+<h4 id="parameters_4">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Location</th>
+<th>Type</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>booking_room_id</strong></td>
+<td>Path</td>
+<td>string</td>
+<td>The id of the booking room. Only for the second request.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><strong>show_only_future_meetings</strong></td>
+<td>Query</td>
+<td>boolean</td>
+<td>If <code>true</code>, the list contains only meetings that did not end. The earliest meetings come first. Only for the first request.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><strong>show_only_past_meetings</strong></td>
+<td>Query</td>
+<td>boolean</td>
+<td>If <code>true</code>, the list contains only meetings that ended. Only for the first request.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><strong>hide_cancelled_meetings</strong></td>
+<td>Query</td>
+<td>boolean</td>
+<td>If <code>true</code>, the list does not contain cancelled meetings.</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<h3 id="response_4">Response</h3>
+<p>Each item has these fields:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>id</strong></td>
+<td>string</td>
+<td>The id of the meeting.</td>
+</tr>
+<tr>
+<td><strong>user</strong></td>
+<td>object</td>
+<td>The student (<code>id</code>, <code>first_name</code>, <code>last_name</code>, <code>profile_photo_url</code>, <code>online_at</code>).</td>
+</tr>
+<tr>
+<td><strong>scheduled_for</strong></td>
+<td>string</td>
+<td>The booked start time.</td>
+</tr>
+<tr>
+<td><strong>start_date</strong></td>
+<td>string</td>
+<td>If the meeting started, the real start time. Otherwise, the booked start time.</td>
+</tr>
+<tr>
+<td><strong>end_date</strong></td>
+<td>string</td>
+<td>If the meeting ended, the real end time. Otherwise, the booked end time.</td>
+</tr>
+<tr>
+<td><strong>status</strong></td>
+<td>string</td>
+<td>See <a href="#meeting-status">Meeting status</a>.</td>
+</tr>
+<tr>
+<td><strong>booking_room</strong></td>
+<td>object</td>
+<td>The room (<code>id</code>, <code>title</code>, <code>description</code>, <code>type</code>, <code>minutes_per_session</code>, <code>discipline</code>). Only in the first request.</td>
+</tr>
+<tr>
+<td><strong>physical_room</strong></td>
+<td>object</td>
+<td>The physical room (<code>id</code>, <code>name</code>, <code>location</code>). If the meeting has no physical room, this field is not present.</td>
+</tr>
+</tbody>
+</table>
+<p>To get the teacher of a meeting, use <a href="#get-a-booking">Get a booking</a>.</p>
+<h4 id="status_4">Status</h4>
+<table>
+<thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>200</td>
+<td>The meetings were fetched.</td>
+</tr>
+<tr>
+<td>401</td>
+<td>Unauthorized.</td>
+</tr>
+<tr>
+<td>403</td>
+<td>The user type of the API key cannot use this request.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="example_4">Example</h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="p">[</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="w">  </span><span class="p">{</span>
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="w">    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0b8d3a51-2c4e-4f6a-9b1d-7e3f5a9c2d10"</span><span class="p">,</span>
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="w">    </span><span class="nt">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="w">      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3591f1c3-cf26-4f36-b4d2-d7078359c0d0"</span><span class="p">,</span>
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="w">      </span><span class="nt">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Student's first name"</span><span class="p">,</span>
+<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="w">      </span><span class="nt">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Student's last name"</span><span class="p">,</span>
+<a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a><span class="w">      </span><span class="nt">"profile_photo_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://sa-east-1-public-cdn.stift.com.br/resources/images/placeholders/profile_photo_placeholder.png"</span><span class="p">,</span>
+<a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a><span class="w">      </span><span class="nt">"online_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2026-11-04T18:20:00.000Z"</span>
+<a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a><span class="w">    </span><span class="p">},</span>
+<a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a><span class="w">    </span><span class="nt">"scheduled_for"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2026-11-05T13:00:00.000Z"</span><span class="p">,</span>
+<a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a><span class="w">    </span><span class="nt">"start_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2026-11-05T13:00:00.000Z"</span><span class="p">,</span>
+<a id="__codelineno-12-13" name="__codelineno-12-13" href="#__codelineno-12-13"></a><span class="w">    </span><span class="nt">"end_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2026-11-05T13:30:00.000Z"</span><span class="p">,</span>
+<a id="__codelineno-12-14" name="__codelineno-12-14" href="#__codelineno-12-14"></a><span class="w">    </span><span class="nt">"booking_room"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-12-15" name="__codelineno-12-15" href="#__codelineno-12-15"></a><span class="w">      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6f1c2d3e-4b5a-4c6d-8e7f-9a0b1c2d3e4f"</span><span class="p">,</span>
+<a id="__codelineno-12-16" name="__codelineno-12-16" href="#__codelineno-12-16"></a><span class="w">      </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mathematics tutoring"</span><span class="p">,</span>
+<a id="__codelineno-12-17" name="__codelineno-12-17" href="#__codelineno-12-17"></a><span class="w">      </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<a id="__codelineno-12-18" name="__codelineno-12-18" href="#__codelineno-12-18"></a><span class="w">      </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SCHEDULE"</span><span class="p">,</span>
+<a id="__codelineno-12-19" name="__codelineno-12-19" href="#__codelineno-12-19"></a><span class="w">      </span><span class="nt">"minutes_per_session"</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span>
+<a id="__codelineno-12-20" name="__codelineno-12-20" href="#__codelineno-12-20"></a><span class="w">      </span><span class="nt">"discipline"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-12-21" name="__codelineno-12-21" href="#__codelineno-12-21"></a><span class="w">        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<a id="__codelineno-12-22" name="__codelineno-12-22" href="#__codelineno-12-22"></a><span class="w">        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mathematics"</span>
+<a id="__codelineno-12-23" name="__codelineno-12-23" href="#__codelineno-12-23"></a><span class="w">      </span><span class="p">}</span>
+<a id="__codelineno-12-24" name="__codelineno-12-24" href="#__codelineno-12-24"></a><span class="w">    </span><span class="p">},</span>
+<a id="__codelineno-12-25" name="__codelineno-12-25" href="#__codelineno-12-25"></a><span class="w">    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PENDING"</span>
+<a id="__codelineno-12-26" name="__codelineno-12-26" href="#__codelineno-12-26"></a><span class="w">  </span><span class="p">}</span>
+<a id="__codelineno-12-27" name="__codelineno-12-27" href="#__codelineno-12-27"></a><span class="p">]</span>
+</code></pre></div>
+<h2 id="get-a-booking">Get a booking</h2>
+<p>To get one meeting, send this <code>GET</code> request:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="err">GET /bookings/{booking_room_id}/schedule/{scheduled_meeting_id}</span>
+</code></pre></div>
+<h3 id="request_5">Request</h3>
+<h4 id="parameters_5">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Location</th>
+<th>Type</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>booking_room_id</strong></td>
+<td>Path</td>
+<td>string</td>
+<td>The id of the booking room.</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><strong>scheduled_meeting_id</strong></td>
+<td>Path</td>
+<td>string</td>
+<td>The id of the meeting.</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<h3 id="response_5">Response</h3>
+<p>The response contains these fields:</p>
+<ul>
+<li><code>id</code>, <code>scheduled_for</code>, <code>scheduled_duration_in_minutes</code>, <code>description</code>, <code>created_at</code> and <code>status</code>.</li>
+<li><code>user</code>: the student.</li>
+<li><code>teacher</code>: the teacher (<code>id</code>, <code>first_name</code>, <code>last_name</code>, <code>profile_photo_url</code>, <code>online_at</code>).</li>
+<li><code>booking_room</code>: the room, with its <code>discipline</code>.</li>
+<li><code>attachments</code>: the files that the student sent with the booking.</li>
+<li><code>physical_room</code>: the physical room. If the meeting has no physical room, this field is not present.</li>
+<li><code>meeting</code>: the data of the call, only after the call ended. It contains <code>started_at</code>, <code>ended_at</code>, <code>duration</code> (in seconds), <code>ratings</code>, <code>teacher_notes</code>, <code>student_feedback</code> and <code>teacher_feedback</code>.</li>
+<li><code>cancelled_by</code>, <code>cancellation_reason</code> and <code>cancelled_at</code>. If the status is not <code>CANCELLED</code>, these fields are not present.</li>
+</ul>
+<h4 id="status_5">Status</h4>
+<table>
+<thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>200</td>
+<td>The meeting was fetched.</td>
+</tr>
+<tr>
+<td>401</td>
+<td>Unauthorized.</td>
+</tr>
+<tr>
+<td>403</td>
+<td>The user type of the API key cannot use this request.</td>
+</tr>
+<tr>
+<td>404</td>
+<td><code>Scheduled meeting not found</code>.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="move-a-booking">Move a booking</h2>
+<p>To change the time or the teacher of a meeting, send this <code>POST</code> request:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="err">POST /bookings/{booking_room_id}/schedule/{scheduled_meeting_id}</span>
+</code></pre></div>
+<p>You can move only a meeting with the status <code>PENDING</code>. The student does not lose or get back a credit. The API sends a notification to the student and to the teachers.</p>
+<p>To find a new time, send <a href="#get-available-schedules">Get available schedules</a> with <code>studentId</code> and <code>rescheduleMeetingId</code>. The new time must be in that response, with the teacher in the status <code>AVAILABLE</code>.</p>
+<h3 id="request_6">Request</h3>
+<h4 id="parameters_6">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Location</th>
+<th>Type</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>booking_room_id</strong></td>
+<td>Path</td>
+<td>string</td>
+<td>The id of the booking room.</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><strong>scheduled_meeting_id</strong></td>
+<td>Path</td>
+<td>string</td>
+<td>The id of the meeting.</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><strong>schedule_datetime</strong></td>
+<td>Body</td>
+<td>string</td>
+<td>The new start time. Use a <code>date</code> value from the available schedules without changes.</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><strong>teacher_id</strong></td>
+<td>Body</td>
+<td>string</td>
+<td>The teacher of the meeting. Send the current teacher to change only the time.</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><strong>physical_room_id</strong></td>
+<td>Body</td>
+<td>string</td>
+<td>The id of a physical room from <code>physical_rooms_ids</code>. If you do not send it, the API picks a free physical room.</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><span class="filename">Request body</span><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="p">{</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="w">  </span><span class="nt">"schedule_datetime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2026-11-06T14:00:00.000Z"</span><span class="p">,</span>
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="w">  </span><span class="nt">"teacher_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f73c6e53-cdca-4f01-b64d-04b9346c9823"</span>
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="p">}</span>
+</code></pre></div>
+<h3 id="response_6">Response</h3>
+<p>The response body is an empty object (<code>{}</code>).</p>
+<h4 id="status_6">Status</h4>
+<table>
+<thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>200</td>
+<td>The meeting was moved.</td>
+</tr>
+<tr>
+<td>400</td>
+<td><code>Scheduled meeting status must be PENDING</code>, or a parameter is wrong.</td>
+</tr>
+<tr>
+<td>401</td>
+<td>Unauthorized.</td>
+</tr>
+<tr>
+<td>403</td>
+<td><code>UNAVAILABLE_DATE</code>: the new time or the teacher is not free.</td>
+</tr>
+<tr>
+<td>404</td>
+<td><code>Scheduled meeting not found</code> or <code>Booking room not found</code>.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="cancel-a-booking">Cancel a booking</h2>
+<p>To cancel a meeting, send this <code>DELETE</code> request:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="err">DELETE /bookings/{booking_room_id}/schedule/{scheduled_meeting_id}</span>
+</code></pre></div>
+<p>You can cancel a meeting until its booked end time. When a group admin cancels a meeting, the student always gets the credit back, and the room's cancellation deadline does not apply. The API sends a notification to the student and to the teacher.</p>
+<h3 id="request_7">Request</h3>
+<h4 id="parameters_7">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Location</th>
+<th>Type</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>booking_room_id</strong></td>
+<td>Path</td>
+<td>string</td>
+<td>The id of the booking room.</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><strong>scheduled_meeting_id</strong></td>
+<td>Path</td>
+<td>string</td>
+<td>The id of the meeting.</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><strong>cancellation_reason</strong></td>
+<td>Body</td>
+<td>string</td>
+<td>The reason for the cancellation. The meeting detail shows it.</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><span class="filename">Request body</span><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="p">{</span>
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="w">  </span><span class="nt">"cancellation_reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The student has an exam at this time."</span>
+<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="p">}</span>
+</code></pre></div>
+<h3 id="response_7">Response</h3>
+<h4 id="status_7">Status</h4>
+<table>
+<thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>200</td>
+<td>The meeting was cancelled.</td>
+</tr>
+<tr>
+<td>401</td>
+<td>Unauthorized.</td>
+</tr>
+<tr>
+<td>403</td>
+<td>The user type of the API key cannot use this request.</td>
+</tr>
+<tr>
+<td>404</td>
+<td><code>Meeting not found</code>: the meeting does not exist, ended, or is already cancelled.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="example_5">Example</h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="p">{</span>
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="w">  </span><span class="nt">"canceled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="p">}</span>
+</code></pre></div>
+<h2 id="availability-blocks">Availability Blocks</h2>
+<p>Availability blocks are used to block time slots during which a teacher is not available and thus cannot be booked.</p>
+<h3 id="get-availability-blocks">Get Availability Blocks</h3>
+<p>To get a list of all the availability blocks, send this <code>GET</code> request:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="err">GET /bookings/availability-blocks</span>
+</code></pre></div>
+<h4 id="request_8">Request</h4>
+<h5 id="parameters_8">Parameters</h5>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Location</th>
+<th>Type</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>start_date</strong></td>
+<td>Body</td>
+<td>Milliseconds since epoch</td>
+<td>The date to start showing availability blocks in milliseconds since UNIX Epoch. If not specified, it defaults to the current year's start.</td>
+<td>No</td>
+</tr>
+<tr>
+<td><strong>end_date</strong></td>
+<td>Body</td>
+<td>Milliseconds since epoch</td>
+<td>The date to end showing availability blocks in milliseconds since UNIX Epoch. If not specified, it defaults to the current year's end.</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<h4 id="response_8">Response</h4>
+<h5 id="status_8">Status</h5>
+<table>
+<thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>200</td>
+<td>The availability blocks were fetched successfully.</td>
+</tr>
+<tr>
+<td>401</td>
+<td>Unauthorized.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="example_6">Example</h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="p">[</span>
+<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="w">  </span><span class="p">{</span>
+<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="w">    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"85f23241-78c3-4b1c-8238-1804a82c0ee7"</span><span class="p">,</span>
+<a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a><span class="w">    </span><span class="nt">"start_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-12-13T11:00:00.000Z"</span><span class="p">,</span>
+<a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a><span class="w">    </span><span class="nt">"end_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-12-13T23:00:00.000Z"</span><span class="p">,</span>
+<a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a><span class="w">    </span><span class="nt">"reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Reason given by the teacher/block creator"</span><span class="p">,</span>
+<a id="__codelineno-20-7" name="__codelineno-20-7" href="#__codelineno-20-7"></a><span class="w">    </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-12-12T19:46:08.623Z"</span><span class="p">,</span>
+<a id="__codelineno-20-8" name="__codelineno-20-8" href="#__codelineno-20-8"></a><span class="w">    </span><span class="nt">"teacher"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-20-9" name="__codelineno-20-9" href="#__codelineno-20-9"></a><span class="w">      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f73c6e53-cdca-4f01-b64d-04b9346c9823"</span><span class="p">,</span>
+<a id="__codelineno-20-10" name="__codelineno-20-10" href="#__codelineno-20-10"></a><span class="w">      </span><span class="nt">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Teacher's first name"</span><span class="p">,</span>
+<a id="__codelineno-20-11" name="__codelineno-20-11" href="#__codelineno-20-11"></a><span class="w">      </span><span class="nt">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Teacher's last name"</span><span class="p">,</span>
+<a id="__codelineno-20-12" name="__codelineno-20-12" href="#__codelineno-20-12"></a><span class="w">      </span><span class="nt">"profile_photo_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://sa-east-1-public-cdn.stift.com.br/resources/images/placeholders/profile_photo_placeholder.png"</span><span class="p">,</span>
+<a id="__codelineno-20-13" name="__codelineno-20-13" href="#__codelineno-20-13"></a><span class="w">      </span><span class="nt">"disciplines"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<a id="__codelineno-20-14" name="__codelineno-20-14" href="#__codelineno-20-14"></a><span class="w">        </span><span class="p">{</span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mathematics"</span><span class="p">},</span>
+<a id="__codelineno-20-15" name="__codelineno-20-15" href="#__codelineno-20-15"></a><span class="w">        </span><span class="p">{</span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Physics"</span><span class="p">}</span>
+<a id="__codelineno-20-16" name="__codelineno-20-16" href="#__codelineno-20-16"></a><span class="w">      </span><span class="p">]</span>
+<a id="__codelineno-20-17" name="__codelineno-20-17" href="#__codelineno-20-17"></a><span class="w">    </span><span class="p">},</span>
+<a id="__codelineno-20-18" name="__codelineno-20-18" href="#__codelineno-20-18"></a><span class="w">    </span><span class="nt">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-20-19" name="__codelineno-20-19" href="#__codelineno-20-19"></a><span class="w">      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f73c6e53-cdca-4f01-b64d-04b9346c9823"</span><span class="p">,</span>
+<a id="__codelineno-20-20" name="__codelineno-20-20" href="#__codelineno-20-20"></a><span class="w">      </span><span class="nt">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Block creator's first name"</span><span class="p">,</span>
+<a id="__codelineno-20-21" name="__codelineno-20-21" href="#__codelineno-20-21"></a><span class="w">      </span><span class="nt">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Block creator's last name"</span><span class="p">,</span>
+<a id="__codelineno-20-22" name="__codelineno-20-22" href="#__codelineno-20-22"></a><span class="w">      </span><span class="nt">"profile_photo_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://sa-east-1-public-cdn.stift.com.br/resources/images/placeholders/profile_photo_placeholder.png"</span>
+<a id="__codelineno-20-23" name="__codelineno-20-23" href="#__codelineno-20-23"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-20-24" name="__codelineno-20-24" href="#__codelineno-20-24"></a><span class="w">  </span><span class="p">}</span>
+<a id="__codelineno-20-25" name="__codelineno-20-25" href="#__codelineno-20-25"></a><span class="p">]</span>
+</code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2025 Stift LTDA
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.instant", "navigation.tracking", "navigation.top"], "search": "../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.c21346df.min.js"></script>
+      
+    
+  </body>
+</html>
