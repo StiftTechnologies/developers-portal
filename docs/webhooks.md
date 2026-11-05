@@ -226,7 +226,7 @@ Booking events are sent when something happens inside a booking room, such as a 
 | **BOOKING_ROOM_SESSION_STARTED** | A teacher started a session in the booking room. |
 | **BOOKING_ROOM_SESSION_ENDED** | A teacher's session ended. |
 | **TEACHER_FEEDBACK_PROVIDED** | A teacher provided feedback for a meeting. |
-| **SCHEDULED_MEETING_CREATED** | A meeting was scheduled. |
+| **SCHEDULED_MEETING_CREATED** | A meeting was scheduled. Stift sends this event only for booking rooms that send an e-mail for each new booking. |
 
 ### Payload
 
