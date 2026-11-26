@@ -31,6 +31,7 @@ nav:
   - questions.md
   - configs.md
   - bookings.md
+  - extracurricular-activities.md
   - disciplines.md
   - auth_integration.md
   - webhooks.md
