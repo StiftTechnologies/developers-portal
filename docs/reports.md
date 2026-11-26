@@ -326,7 +326,7 @@ The period can be at most 366 days. For a longer period, use [Report Requests](#
 | **category_ids** | Body     | string[]                 | Only activities of these categories. From 1 to 500 ids.                                                                                                                                                                                           | No       |
 | **Accept**       | Header   | Mime type                | The format of the report: `application/json` (json), `text/csv` (csv) or `application/vnd.openxmlformats-officedocument.spreadsheetml.sheet` (xlsx). `*/*` also returns json. **If you do not send this header, the report is in CSV.** Send one value only. | No       |
 
-The report includes each activity that overlaps the period, also when it starts before `start_date` or ends after `end_date`. The report has no filter for types or groups.
+The report includes each activity that overlaps the period. Thus an activity that starts before `start_date` or ends after `end_date` is in the report. The report has no filter for types or groups.
 
 ```json title="Request body"
 {
@@ -347,7 +347,7 @@ The oldest activities come first. Each row has these columns:
 | **teacher_email**   | E-mail do professor | The e-mail of the teacher.                                        |
 | **category_name**   | Categoria          | The name of the category.                                          |
 | **type_name**       | Tipo               | The name of the type.                                              |
-| **description**     | Descrição          | The description. In json, `null` if the activity has none.         |
+| **description**     | Descrição          | The description. For an activity without a description, json shows `null` and csv shows an empty value. |
 | **start_date**      | Início             | The start of the activity.                                         |
 | **end_date**        | Fim                | The end of the activity.                                           |
 | **duration_hours**  | Duração (horas)    | The length of the activity in hours, with up to 2 decimals.        |
@@ -360,7 +360,7 @@ The format changes the values:
 - json: the field names are in English. Dates are in ISO 8601 format and UTC. `duration_hours` is a number, for example `1.5`.
 - csv and xlsx: the column names are in Portuguese. Dates are in the `dd/MM/yyyy HH:mm` format, in the São Paulo time zone (`America/Sao_Paulo`).
 - csv: the file starts with a UTF-8 byte order mark, lines end with CRLF, and all values are in double quotes. `duration_hours` uses a comma, for example `1,5`.
-- csv: if a text value starts with `=`, `+`, `-`, `@`, a tab or a carriage return, the value gets a `'` in front of it, for example `'=SUM(A1)`. This stops spreadsheet programs from running the value as a formula. The json and xlsx values do not change.
+- csv: some text values start with a formula character: `=`, `+`, `-`, `@`, a tab or a carriage return. Each of these values gets a `'` in front of it, for example `'=SUM(A1)`. This stops spreadsheet programs from running the value as a formula. The json and xlsx values do not change.
 
 For csv and xlsx, the `Content-disposition` header gives a file name such as `atividades-extracurriculares_2026-11-01_a_2026-11-30.csv`.
 
@@ -369,7 +369,7 @@ For csv and xlsx, the `Content-disposition` header gives a file name such as `at
 | Code | Description                                                                                                                         |
 | ---- | ----------------------------------------------------------------------------------------------------------------------------------- |
 | 200  | The report was generated successfully.                                                                                              |
-| 400  | A parameter is missing or has a wrong format, a list has more than 500 ids, or the `Accept` header has a value that is not supported. |
+| 400  | A parameter is missing or not correct. For example, a list has more than 500 ids, or the API does not support the `Accept` value. |
 | 401  | Unauthorized.                                                                                                                       |
 | 403  | The module is off, or the user type cannot use this request.                                                                        |
 | 404  | `No schools found.`: no school of `school_ids` is visible to you.                                                                   |
@@ -431,7 +431,7 @@ When you create the request, the API saves your access: your schools and your gr
 | **PENDING**    | The request is in the queue.                                  |
 | **PROCESSING** | Stift is making the file.                                     |
 | **DONE**       | The file is ready. `download_url` has the link.               |
-| **FAILED**     | Stift could not make the file. `error` has the reason.        |
+| **FAILED**     | Stift did not make the file. `error` has the reason.          |
 
 ### Create a report request
 
@@ -511,11 +511,11 @@ GET /reports/requests/{report_request_id}
 | **format**       | string         | `csv` or `xlsx`.                                                                                  |
 | **status**       | string         | See [Report request status](#report-request-status).                                              |
 | **params**       | object         | The parameters that the API saved for the report. Do not depend on its fields.                    |
-| **file_name**    | string \| null | The name of the file, when `status` is `DONE`.                                                    |
-| **error**        | string \| null | The reason, when `status` is `FAILED`.                                                            |
+| **file_name**    | string \| null | The name of the file. It has a value for the status `DONE`.                                       |
+| **error**        | string \| null | The reason of the failure. It has a value for the status `FAILED`.                                |
 | **created_at**   | string         | When the request was created.                                                                     |
 | **finished_at**  | string \| null | When the file was ready or the request failed.                                                    |
-| **download_url** | string         | A link to the file. Only when `status` is `DONE`. The link expires after one hour. To get a new link, send this request again. |
+| **download_url** | string         | A link to the file. This field is present only for the status `DONE`. The link expires after one hour. To get a new link, send this request again. |
 
 #### Status
 

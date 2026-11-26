@@ -603,7 +603,7 @@ The response is the new [activity object](#the-activity-object).
 | 201  | The activity was recorded.                                                                                                       |
 | 400  | A parameter is missing or has a wrong format, or the description is missing for a type that requires it.                         |
 | 400  | `teacher_id is required`.                                                                                                        |
-| 400  | `end_date must be after start_date`.                                                                                             |
+| 400  | `end_date` is not after `start_date`. `errors[0].msg` is `end_date must be after start_date`.                                    |
 | 400  | `This activity type or its category is disabled`.                                                                                |
 | 400  | `This activity category is not available to the teacher`: the teacher cannot get activities in any school of the category, for example because the teacher is blocked. |
 | 400  | `school_id is not a school of this category where the teacher has the module`.                                                  |
@@ -644,7 +644,7 @@ Only ADMIN and GROUP_ADMIN users can change activities. You cannot change the te
 These rules apply:
 
 - You can keep the current type. This is also true for a type that is now disabled or deleted. To move the activity to another type, that type must not be disabled.
-- If you change the type and do not send `school_id`, the activity keeps its school when that school is in the new category. Otherwise, it goes to the school of the teacher's oldest group in the new category.
+- If you change the type and do not send `school_id`, the activity keeps its school when that school is in the new category. Otherwise, it goes to the school of the teacher's oldest group in the new category. If the teacher has no school in the new category, the API returns 400.
 - You can change activities of blocked teachers.
 - If the type requires a description, you cannot remove the description.
 
@@ -678,8 +678,9 @@ The response is the changed [activity object](#the-activity-object).
 | ---- | --------------------------------------------------------------------------------------------------- |
 | 200  | The activity was changed.                                                                           |
 | 400  | A parameter has a wrong format, or the description is missing for a type that requires it.         |
-| 400  | `end_date must be after start_date`.                                                                |
+| 400  | The end is not after the start. If you send both dates, `errors[0].msg` is `end_date must be after start_date`. If you send one date, the `message` is `end_date must be after start_date`. |
 | 400  | `This activity type or its category is disabled`: the new type or its category is disabled.         |
+| 400  | `This activity category is not available to the teacher`: the teacher has no school in the category of the new type. |
 | 400  | `school_id is not a school of this category where the teacher has the module`.                      |
 | 401  | Unauthorized.                                                                                       |
 | 403  | The module is off, or the user type cannot use this request.                                        |
