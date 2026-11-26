@@ -324,7 +324,7 @@ The period can be at most 366 days. For a longer period, use [Report Requests](#
 | **school_ids**   | Body     | string[]                 | Only activities in these schools. From 1 to 500 ids. If you do not send it, the report contains all schools that you can see.                                                                                                                     | No       |
 | **teacher_ids**  | Body     | string[]                 | Only activities of these teachers. From 1 to 500 ids.                                                                                                                                                                                             | No       |
 | **category_ids** | Body     | string[]                 | Only activities of these categories. From 1 to 500 ids.                                                                                                                                                                                           | No       |
-| **Accept**       | Header   | Mime type                | The format of the report: `application/json` (json), `text/csv` (csv) or `application/vnd.openxmlformats-officedocument.spreadsheetml.sheet` (xlsx). `*/*` also returns json. **If you do not send this header, the report is in CSV.** Send one value only. | No       |
+| **Accept**       | Header   | Mime type                | The format of the report. **If you do not send this header, the report is in json.** To get csv or xlsx, send `text/csv` (csv) or `application/vnd.openxmlformats-officedocument.spreadsheetml.sheet` (xlsx). `application/json` and `*/*` also give json. If you send a list of types, the API uses your order and your `q` values. | No       |
 
 The report includes each activity that overlaps the period. Thus an activity that starts before `start_date` or ends after `end_date` is in the report. The report has no filter for types or groups.
 
@@ -369,7 +369,7 @@ For csv and xlsx, the `Content-disposition` header gives a file name such as `at
 | Code | Description                                                                                                                         |
 | ---- | ----------------------------------------------------------------------------------------------------------------------------------- |
 | 200  | The report was generated successfully.                                                                                              |
-| 400  | A parameter is missing or not correct. For example, a list has more than 500 ids, or the API does not support the `Accept` value. |
+| 400  | A parameter is missing or not correct. For example, a list has more than 500 ids, or the API supports none of the `Accept` types. |
 | 401  | Unauthorized.                                                                                                                       |
 | 403  | The module is off, or the user type cannot use this request.                                                                        |
 | 404  | `No schools found.`: no school of `school_ids` is visible to you.                                                                   |
